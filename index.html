@@ -30,25 +30,30 @@
     h1,h2,h3,h4 { font-family: 'Cormorant Garamond', serif; font-weight: 400; line-height: 1.1; }
 
     /* ── LANG BAR ── */
-    #lang-bar {
-      position: fixed; top: 0; right: 0; z-index: 200;
-      display: flex; gap: 4px; padding: 10px 28px;
-      pointer-events: none;
+    /* ── lang buttons zitten nu IN de nav ── */
+    .nav-lang {
+      display: flex; gap: 4px; margin-left: 16px;
+      border-left: 1px solid rgba(248,244,238,0.2);
+      padding-left: 16px;
+      transition: border-color 0.35s;
     }
+    nav.scrolled .nav-lang { border-left-color: rgba(46,36,30,0.15); }
     .lang-btn {
-      pointer-events: all;
-      background: rgba(239,231,218,0.7);
-      border: 1px solid rgba(46,36,30,0.15);
-      color: var(--mid);
-      padding: 4px 14px;
+      background: transparent;
+      border: 1px solid rgba(248,244,238,0.3);
+      color: rgba(248,244,238,0.7);
+      padding: 4px 10px;
       border-radius: 2px;
       cursor: pointer;
-      font-size: 0.72rem;
+      font-size: 0.68rem;
       font-family: 'Manrope', sans-serif;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      backdrop-filter: blur(8px);
-      transition: background 0.2s, color 0.2s;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    nav.scrolled .lang-btn {
+      border-color: rgba(46,36,30,0.2);
+      color: var(--mid);
     }
     .lang-btn:hover, .lang-btn.active {
       background: var(--terra);
@@ -76,7 +81,8 @@
       transition: color 0.35s;
     }
     nav.scrolled .nav-logo { color: var(--ink); }
-    .nav-logo em { font-style: italic; color: var(--saffron); }
+    .nav-logo em { font-style: italic; color: var(--saffron); text-shadow: 0 1px 8px rgba(0,0,0,0.55); }
+    nav.scrolled .nav-logo em { text-shadow: none; }
     .nav-links { display: flex; gap: 32px; list-style: none; }
     .nav-links a {
       font-size: 0.72rem; font-weight: 500;
@@ -98,13 +104,13 @@
     /* ── HERO ── */
     #hero {
       position: relative;
-      height: 100vh; min-height: 620px;
+      height: 82vh; min-height: 560px;
       display: flex; align-items: flex-end;
-      padding: 0 0 80px;
+      padding: 0 0 64px;
       overflow: hidden;
     }
     .hero-bg { position: absolute; inset: 0; }
-    .hero-bg img { object-position: center 30%; }
+    .hero-bg img { object-position: center center; }
     .hero-overlay {
       position: absolute; inset: 0;
       background: linear-gradient(
@@ -125,8 +131,9 @@
     .hero-left { flex: 1; }
     .hero-eyebrow {
       font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--saffron); margin-bottom: 16px;
+      text-transform: uppercase; color: rgba(255,255,255,0.85); margin-bottom: 16px;
       display: flex; align-items: center; gap: 12px;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.5);
     }
     .hero-eyebrow::before {
       content: ''; display: inline-block;
@@ -395,14 +402,7 @@
 </head>
 <body>
 
-<!-- LANG BAR -->
-<div id="lang-bar">
-  <button class="lang-btn active" onclick="setLang('nl')">NL</button>
-  <button class="lang-btn" onclick="setLang('en')">EN</button>
-  <button class="lang-btn" onclick="setLang('es')">ES</button>
-</div>
-
-<!-- NAV -->
+<!-- NAV (taalblokjes zitten nu rechts in de nav) -->
 <nav id="navbar">
   <div class="nav-logo">Bon <em>Vent</em></div>
   <ul class="nav-links">
@@ -411,31 +411,36 @@
     <li><a href="#gallery"><span class="il active" data-nav="nl">Foto's</span><span class="il" data-nav="en">Gallery</span><span class="il" data-nav="es">Galería</span></a></li>
     <li><a href="#info">Info</a></li>
     <li><a href="#reserve" class="nav-reserve"><span class="il active" data-nav="nl">Reserveren</span><span class="il" data-nav="en">Reserve</span><span class="il" data-nav="es">Reservar</span></a></li>
+    <li class="nav-lang">
+      <button class="lang-btn active" onclick="setLang('nl')">NL</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('es')">ES</button>
+    </li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-bg"><img src="vooraanzicht.jpg" alt="Bon Vent" /></div>
+  <div class="hero-bg"><img src="view%20from%20restaurant.jpg" alt="Uitzicht Sierra de Bernia" /></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <div class="hero-left">
-      <div class="hero-eyebrow">Jalón · Costa Blanca · Alicante</div>
+      <div class="hero-eyebrow">Sierra de Bernia · Costa Blanca · Alicante</div>
       <div data-lang="nl" class="active"><h1>Bergen,<br><em>smaken,</em><br>verhalen</h1></div>
       <div data-lang="en"><h1>Mountains,<br><em>flavours,</em><br>stories</h1></div>
       <div data-lang="es"><h1>Montañas,<br><em>sabores,</em><br>historias</h1></div>
     </div>
     <div class="hero-right">
       <div data-lang="nl" class="active">
-        <p>Mediterraanse bergkeuken in het hart van het Jalón-dal. Eerlijk, seizoensgebonden en bereidt met passie.</p>
+        <p>Mediterraanse bergkeuken hoog op de Sierra de Bernia. Eerlijk, seizoensgebonden en bereidt met passie.</p>
         <a href="#reserve" class="btn btn-primary">Reserveer een tafel</a>
       </div>
       <div data-lang="en">
-        <p>Mediterranean mountain cuisine in the heart of the Jalón Valley. Honest, seasonal and cooked with passion.</p>
+        <p>Mediterranean mountain cuisine high on the Sierra de Bernia. Honest, seasonal and cooked with passion.</p>
         <a href="#reserve" class="btn btn-primary">Reserve a table</a>
       </div>
       <div data-lang="es">
-        <p>Cocina mediterránea de montaña en el corazón del Valle del Jalón. Honesta, de temporada y preparada con pasión.</p>
+        <p>Cocina mediterránea de montaña en lo alto de la Sierra de Bernia. Honesta, de temporada y preparada con pasión.</p>
         <a href="#reserve" class="btn btn-primary">Reservar una mesa</a>
       </div>
     </div>
@@ -449,7 +454,7 @@
     <div class="intro-block">
       <div class="intro-num">01</div>
       <h3><span class="il active" data-nav="nl">Lokale ingrediënten</span><span class="il" data-nav="en">Local ingredients</span><span class="il" data-nav="es">Ingredientes locales</span></h3>
-      <p><span class="il active" data-nav="nl">Verse producten van het Jalón-dal — groenten, olijfolie en kruiden rechtstreeks van de boer.</span><span class="il" data-nav="en">Fresh produce from the Jalón Valley — vegetables, olive oil and herbs straight from the farm.</span><span class="il" data-nav="es">Productos frescos del Valle del Jalón — verduras, aceite de oliva y hierbas directamente del campo.</span></p>
+      <p><span class="il active" data-nav="nl">Verse producten van de Bernia en de vallei — groenten, olijfolie en kruiden rechtstreeks van de boer.</span><span class="il" data-nav="en">Fresh produce from the Bernia and the valley below — vegetables, olive oil and herbs straight from the farm.</span><span class="il" data-nav="es">Productos frescos de la Bernia y el valle — verduras, aceite de oliva y hierbas directamente del campo.</span></p>
     </div>
     <div class="intro-divider"></div>
     <div class="intro-block">
@@ -473,7 +478,7 @@
       <div class="label"><span class="il active" data-nav="nl">Ons verhaal</span><span class="il" data-nav="en">Our story</span><span class="il" data-nav="es">Nuestra historia</span></div>
       <div data-lang="nl" class="active">
         <h2 class="display">Waar de bergen<br><em>de zee ontmoeten</em></h2>
-        <p>Bon Vent staat aan de CV-749, midden in het groene Jalón-dal. Een restaurant dat geboren is uit liefde voor de plek — de rode aarde, de amandel- en olijfbomen, de bijna tastbare stilte van de heuvels.</p>
+        <p>Bon Vent ligt hoog op de Sierra de Bernia, met een spectaculair uitzicht over de Costa Blanca. Een restaurant dat geboren is uit liefde voor de plek — de ruige rotsen, de amandel- en olijfbomen, de bijna tastbare stilte van de bergen.</p>
         <p>We koken zoals de streek het vraagt: eerlijk, seizoensgebonden, met vuur en geduld.</p>
         <div class="stats">
           <div><div class="stat-val">+15</div><div class="stat-label">Jaar ervaring</div></div>
@@ -483,7 +488,7 @@
       </div>
       <div data-lang="en">
         <h2 class="display">Where mountains<br><em>meet the sea</em></h2>
-        <p>Bon Vent sits on the CV-749, in the lush Jalón Valley. A restaurant born from love of place — red earth, almond and olive trees, the almost tangible silence of the hills.</p>
+        <p>Bon Vent sits high on the Sierra de Bernia, with spectacular views over the Costa Blanca. A restaurant born from love of place — rugged rock, almond and olive trees, the almost tangible silence of the mountains.</p>
         <p>We cook as the region demands: honest, seasonal, with fire and patience.</p>
         <div class="stats">
           <div><div class="stat-val">+15</div><div class="stat-label">Years experience</div></div>
@@ -493,7 +498,7 @@
       </div>
       <div data-lang="es">
         <h2 class="display">Donde la montaña<br><em>se encuentra con el mar</em></h2>
-        <p>Bon Vent se encuentra en la CV-749, en el fértil Valle del Jalón. Un restaurante nacido del amor por este lugar — tierra roja, almendros y olivos.</p>
+        <p>Bon Vent se encuentra en lo alto de la Sierra de Bernia, con vistas espectaculares sobre la Costa Blanca. Un restaurante nacido del amor por este lugar — roca viva, almendros y olivos, el silencio casi palpable de la montaña.</p>
         <p>Cocinamos como pide la tierra: honesto, de temporada, con fuego y paciencia.</p>
         <div class="stats">
           <div><div class="stat-val">+15</div><div class="stat-label">Años de experiencia</div></div>
@@ -504,7 +509,7 @@
     </div>
   </div>
   <div class="about-img-col">
-    <img src="binnen%20in%20restaurant.jpg" alt="Interieur Bon Vent" />
+    <img src="vooraanzicht.jpg" alt="Restaurante Bon Vent" />
     <div class="about-img-overlay"></div>
   </div>
 </section>
@@ -512,15 +517,15 @@
 <!-- PHOTO BAND -->
 <div class="photo-band">
   <div class="band-item">
-    <img src="uitzicht.jpg" alt="Uitzicht" />
+    <img src="view%20from%20terras%202.jpg" alt="Uitzicht terras" />
     <span class="band-caption"><span class="il active" data-nav="nl">Uitzicht dal</span><span class="il" data-nav="en">Valley view</span><span class="il" data-nav="es">Vista del valle</span></span>
   </div>
   <div class="band-item">
-    <img src="bar.jpg" alt="Bar" />
+    <img src="binnen%20in%20restaurant.jpg" alt="Interieur" />
     <span class="band-caption">Bar</span>
   </div>
   <div class="band-item">
-    <img src="view-from-restaurant.jpg" alt="Terras" />
+    <img src="restaurante-bon-vent%20(3).jpg" alt="Restaurant" />
     <span class="band-caption"><span class="il active" data-nav="nl">Terras</span><span class="il" data-nav="en">Terrace</span><span class="il" data-nav="es">Terraza</span></span>
   </div>
 </div>
@@ -592,9 +597,7 @@
         <h2 class="display" style="margin-bottom:36px">Openingstijden<br><em>& locatie</em></h2>
         <ul class="hours-list">
           <li><span class="day">Maandag</span><span class="time closed">Gesloten</span></li>
-          <li><span class="day">Dinsdag – Vrijdag</span><span class="time">12:00–15:30 · 19:00–22:30</span></li>
-          <li><span class="day">Zaterdag</span><span class="time">12:00–15:30 · 19:00–22:30</span></li>
-          <li><span class="day">Zondag</span><span class="time">12:00–15:30</span></li>
+          <li><span class="day">Dinsdag – Zondag</span><span class="time">12:00 – 15:30</span></li>
         </ul>
         <p style="margin-top:12px;font-size:0.8rem;color:var(--mid-l);font-style:italic;">* Tijden kunnen variëren — bel om te bevestigen</p>
       </div>
@@ -602,9 +605,7 @@
         <h2 class="display" style="margin-bottom:36px">Opening hours<br><em>& location</em></h2>
         <ul class="hours-list">
           <li><span class="day">Monday</span><span class="time closed">Closed</span></li>
-          <li><span class="day">Tuesday – Friday</span><span class="time">12:00–15:30 · 19:00–22:30</span></li>
-          <li><span class="day">Saturday</span><span class="time">12:00–15:30 · 19:00–22:30</span></li>
-          <li><span class="day">Sunday</span><span class="time">12:00–15:30</span></li>
+          <li><span class="day">Tuesday – Sunday</span><span class="time">12:00 – 15:30</span></li>
         </ul>
         <p style="margin-top:12px;font-size:0.8rem;color:var(--mid-l);font-style:italic;">* Hours may vary — call ahead to confirm</p>
       </div>
@@ -612,9 +613,7 @@
         <h2 class="display" style="margin-bottom:36px">Horarios<br><em>y ubicación</em></h2>
         <ul class="hours-list">
           <li><span class="day">Lunes</span><span class="time closed">Cerrado</span></li>
-          <li><span class="day">Martes – Viernes</span><span class="time">12:00–15:30 · 19:00–22:30</span></li>
-          <li><span class="day">Sábado</span><span class="time">12:00–15:30 · 19:00–22:30</span></li>
-          <li><span class="day">Domingo</span><span class="time">12:00–15:30</span></li>
+          <li><span class="day">Martes – Domingo</span><span class="time">12:00 – 15:30</span></li>
         </ul>
         <p style="margin-top:12px;font-size:0.8rem;color:var(--mid-l);font-style:italic;">* Los horarios pueden variar — llame para confirmar</p>
       </div>
@@ -696,10 +695,8 @@
             <label><span class="il active" data-nav="nl">Tijdstip</span><span class="il" data-nav="en">Time</span><span class="il" data-nav="es">Hora</span></label>
             <select required>
               <option value="">—</option>
-              <option>12:00</option><option>12:30</option><option>13:00</option><option>13:30</option>
-              <option>14:00</option><option>14:30</option><option>15:00</option>
-              <option>19:00</option><option>19:30</option><option>20:00</option>
-              <option>20:30</option><option>21:00</option><option>21:30</option><option>22:00</option>
+              <option>12:00</option><option>12:30</option><option>13:00</option>
+              <option>13:30</option><option>14:00</option><option>14:30</option><option>15:00</option>
             </select>
           </div>
         </div>
@@ -743,9 +740,9 @@
   </div>
   <div class="footer-right">
     <strong style="color:rgba(239,231,218,0.5);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;"><span class="il active" data-nav="nl">Openingstijden</span><span class="il" data-nav="en">Opening hours</span><span class="il" data-nav="es">Horario</span></strong><br>
-    <span class="il active" data-nav="nl">Di – Za: 12:00–15:30 · 19:00–22:30<br>Zo: 12:00–15:30 · Ma: gesloten</span>
-    <span class="il" data-nav="en">Tue – Sat: 12:00–15:30 · 19:00–22:30<br>Sun: 12:00–15:30 · Mon: closed</span>
-    <span class="il" data-nav="es">Mar – Sáb: 12:00–15:30 · 19:00–22:30<br>Dom: 12:00–15:30 · Lun: cerrado</span>
+    <span class="il active" data-nav="nl">Di – Zo: 12:00 – 15:30 · Ma: gesloten</span>
+    <span class="il" data-nav="en">Tue – Sun: 12:00 – 15:30 · Mon: closed</span>
+    <span class="il" data-nav="es">Mar – Dom: 12:00 – 15:30 · Lun: cerrado</span>
   </div>
   <div class="footer-copy">© 2026 Restaurante Bon Vent · Jalón · Costa Blanca</div>
 </footer>
