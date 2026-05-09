@@ -3,834 +3,797 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Restaurante Bon Vent – Jalón, Costa Blanca</title>
-  <meta name="description" content="Restaurante Bon Vent in Jalón, Alicante. Mediterraanse keuken met lokale producten. Reserveer nu." />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <title>Bon Vent — Restaurante · Jalón · Costa Blanca</title>
+  <meta name="description" content="Restaurante Bon Vent in Jalón, Alicante. Mediterraanse bergkeuken. Reserveer uw tafel." />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
-    /* ─── Reset & Base ─── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --cream:   #faf7f2;
-      --sand:    #e8dcc8;
-      --olive:   #6b7c4e;
-      --olive-d: #4a5835;
-      --terra:   #c0602a;
-      --terra-d: #9a4d20;
-      --dark:    #2c2c2c;
-      --mid:     #5a5a5a;
-      --light:   #f0ebe2;
-      --white:   #ffffff;
-      --radius:  8px;
-      --shadow:  0 4px 24px rgba(0,0,0,0.10);
+      --ink:      #2E241E;
+      --ink-d:    #16120E;
+      --terra:    #A34733;
+      --terra-d:  #7F3A2B;
+      --saffron:  #D88A1C;
+      --cream:    #EFE7DA;
+      --sand:     #D8C4A8;
+      --offwhite: #F8F4EE;
+      --olive:    #6E7B42;
+      --pine:     #415238;
+      --mid:      #7A6654;
+      --mid-l:    #A8917E;
     }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Lato', sans-serif;
-      background: var(--cream);
-      color: var(--dark);
-      line-height: 1.7;
-    }
-    h1,h2,h3 { font-family: 'Playfair Display', serif; }
-    a { color: inherit; text-decoration: none; }
-    img { display: block; width: 100%; object-fit: cover; }
 
-    /* ─── Language Bar ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Manrope', sans-serif; background: var(--offwhite); color: var(--ink); line-height: 1.75; overflow-x: hidden; }
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    a { color: inherit; text-decoration: none; }
+    h1,h2,h3,h4 { font-family: 'Cormorant Garamond', serif; font-weight: 400; line-height: 1.1; }
+
+    /* ── LANG BAR ── */
     #lang-bar {
-      background: var(--olive-d);
-      padding: 8px 24px;
-      display: flex;
-      justify-content: flex-end;
-      gap: 8px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      position: fixed; top: 0; right: 0; z-index: 200;
+      display: flex; gap: 4px; padding: 10px 28px;
+      pointer-events: none;
     }
     .lang-btn {
-      background: transparent;
-      border: 1px solid rgba(255,255,255,0.4);
-      color: #fff;
-      padding: 3px 12px;
-      border-radius: 20px;
+      pointer-events: all;
+      background: rgba(239,231,218,0.7);
+      border: 1px solid rgba(46,36,30,0.15);
+      color: var(--mid);
+      padding: 4px 14px;
+      border-radius: 2px;
       cursor: pointer;
-      font-size: 0.8rem;
-      font-family: 'Lato', sans-serif;
-      letter-spacing: 0.05em;
-      transition: background 0.2s, border-color 0.2s;
+      font-size: 0.72rem;
+      font-family: 'Manrope', sans-serif;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      backdrop-filter: blur(8px);
+      transition: background 0.2s, color 0.2s;
     }
     .lang-btn:hover, .lang-btn.active {
-      background: rgba(255,255,255,0.2);
-      border-color: #fff;
+      background: var(--terra);
+      color: #fff;
+      border-color: var(--terra);
     }
 
-    /* ─── Nav ─── */
+    /* ── NAV ── */
     nav {
-      background: var(--white);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-      padding: 0 32px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 64px;
-      position: sticky;
-      top: 37px;
-      z-index: 99;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 199;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; height: 68px;
+      transition: background 0.35s, box-shadow 0.35s;
+    }
+    nav.scrolled {
+      background: rgba(248,244,238,0.95);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 rgba(46,36,30,0.08);
     }
     .nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.4rem;
-      color: var(--olive-d);
-      letter-spacing: 0.04em;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem; font-weight: 400;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--offwhite);
+      transition: color 0.35s;
     }
-    .nav-logo span { color: var(--terra); }
-    .nav-links { display: flex; gap: 28px; list-style: none; }
+    nav.scrolled .nav-logo { color: var(--ink); }
+    .nav-logo em { font-style: italic; color: var(--saffron); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
     .nav-links a {
-      font-size: 0.88rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      color: var(--mid);
-      text-transform: uppercase;
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(248,244,238,0.75);
       transition: color 0.2s;
     }
-    .nav-links a:hover { color: var(--terra); }
-
-    /* ─── Hero ─── */
-    #hero {
-      position: relative;
-      height: 92vh;
-      min-height: 520px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      overflow: hidden;
-      background:
-        linear-gradient(to bottom, rgba(0,0,0,0.38) 0%, rgba(0,0,0,0.55) 100%),
-        url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1600&q=80') center/cover no-repeat;
-    }
-    .hero-content { color: #fff; padding: 24px; max-width: 680px; }
-    .hero-content h1 {
-      font-size: clamp(2.4rem, 6vw, 4.2rem);
-      line-height: 1.15;
-      margin-bottom: 16px;
-      text-shadow: 0 2px 12px rgba(0,0,0,0.4);
-    }
-    .hero-content .tagline {
-      font-size: clamp(1rem, 2.5vw, 1.3rem);
-      font-weight: 300;
-      margin-bottom: 32px;
-      letter-spacing: 0.04em;
-      opacity: 0.92;
-    }
-    .btn {
-      display: inline-block;
-      padding: 14px 36px;
-      border-radius: 40px;
-      font-weight: 700;
-      font-size: 0.95rem;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      transition: transform 0.18s, box-shadow 0.18s;
-      cursor: pointer;
-    }
-    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
-    .btn-primary { background: var(--terra); color: #fff; border: none; }
-    .btn-primary:hover { background: var(--terra-d); }
-    .btn-outline { background: transparent; color: #fff; border: 2px solid #fff; margin-left: 12px; }
-    .btn-outline:hover { background: rgba(255,255,255,0.15); }
-
-    /* ─── Sections ─── */
-    section { padding: 88px 24px; }
-    .section-inner { max-width: 1100px; margin: 0 auto; }
-    .section-label {
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--terra);
-      margin-bottom: 10px;
-    }
-    .section-title {
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      color: var(--olive-d);
-      margin-bottom: 20px;
-    }
-    .section-lead {
-      font-size: 1.08rem;
-      color: var(--mid);
-      max-width: 640px;
-      margin-bottom: 48px;
-    }
-    .divider {
-      width: 56px; height: 3px;
+    nav.scrolled .nav-links a { color: var(--mid); }
+    .nav-links a:hover { color: var(--terra) !important; }
+    .nav-reserve {
       background: var(--terra);
-      margin: 16px 0 32px;
+      color: #fff !important;
+      padding: 8px 20px;
       border-radius: 2px;
     }
+    nav.scrolled .nav-reserve { color: #fff !important; }
+    .nav-reserve:hover { background: var(--terra-d) !important; }
 
-    /* ─── About ─── */
-    #about { background: var(--white); }
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 56px;
-      align-items: center;
-    }
-    .about-img {
-      border-radius: var(--radius);
+    /* ── HERO ── */
+    #hero {
+      position: relative;
+      height: 100vh; min-height: 620px;
+      display: flex; align-items: flex-end;
+      padding: 0 0 80px;
       overflow: hidden;
-      box-shadow: var(--shadow);
-      height: 420px;
     }
-    .about-img img { height: 100%; }
-    .about-text h2 { margin-bottom: 8px; }
-    .about-text p { color: var(--mid); margin-bottom: 16px; }
+    .hero-bg { position: absolute; inset: 0; }
+    .hero-bg img { object-position: center 30%; }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(46,36,30,0.10) 0%,
+        rgba(46,36,30,0.08) 35%,
+        rgba(46,36,30,0.55) 70%,
+        rgba(46,36,30,0.82) 100%
+      );
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      width: 100%; max-width: 1200px;
+      margin: 0 auto; padding: 0 40px;
+      display: flex; align-items: flex-end; justify-content: space-between;
+      gap: 40px;
+    }
+    .hero-left { flex: 1; }
+    .hero-eyebrow {
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--saffron); margin-bottom: 16px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: inline-block;
+      width: 32px; height: 1px; background: var(--saffron);
+    }
+    .hero-left h1 {
+      font-size: clamp(3.5rem, 8vw, 7rem); font-weight: 300;
+      color: var(--offwhite); line-height: 0.95;
+    }
+    .hero-left h1 em { font-style: italic; color: var(--sand); }
+    .hero-right { flex-shrink: 0; max-width: 300px; text-align: right; }
+    .hero-right p { font-size: 0.88rem; color: rgba(248,244,238,0.65); line-height: 1.8; margin-bottom: 24px; }
 
-    /* ─── Menu ─── */
-    #menu { background: var(--cream); }
-    .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 28px;
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-block; font-family: 'Manrope', sans-serif;
+      font-size: 0.74rem; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 13px 28px; border-radius: 2px; cursor: pointer;
+      transition: transform 0.18s, background 0.18s, color 0.18s;
     }
-    .menu-card {
-      background: var(--white);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      transition: transform 0.2s;
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--terra); color: #fff; border: none; }
+    .btn-primary:hover { background: var(--terra-d); }
+    .btn-ghost-light { background: transparent; color: var(--offwhite); border: 1px solid rgba(248,244,238,0.45); }
+    .btn-ghost-light:hover { border-color: var(--offwhite); background: rgba(248,244,238,0.1); }
+    .btn-outline-dark { background: transparent; color: var(--ink); border: 1px solid rgba(46,36,30,0.25); }
+    .btn-outline-dark:hover { border-color: var(--terra); color: var(--terra); }
+    .btn-terra-outline { background: transparent; color: var(--terra); border: 1px solid var(--terra); }
+    .btn-terra-outline:hover { background: var(--terra); color: #fff; }
+
+    /* scroll cue */
+    .hero-scroll {
+      position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(248,244,238,0.4); z-index: 2;
     }
-    .menu-card:hover { transform: translateY(-4px); }
-    .menu-card-img { height: 200px; }
-    .menu-card-img img { height: 100%; }
-    .menu-card-body { padding: 24px; }
-    .menu-card-body h3 { color: var(--olive-d); margin-bottom: 8px; font-size: 1.2rem; }
-    .menu-card-body p { color: var(--mid); font-size: 0.93rem; }
+    .hero-scroll span {
+      width: 1px; height: 40px;
+      background: linear-gradient(to bottom, rgba(248,244,238,0.4), transparent);
+      animation: scrollline 1.8s ease-in-out infinite;
+    }
+    @keyframes scrollline { 0%,100%{opacity:0.3} 50%{opacity:1} }
+
+    /* ── INTRO STRIP (cream) ── */
+    #intro { background: var(--cream); padding: 96px 40px; }
+    .intro-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1px 1fr 1px 1fr;
+      gap: 0 48px; align-items: start;
+    }
+    .intro-divider { background: rgba(46,36,30,0.12); min-height: 80px; margin: 0 auto; width: 1px; }
+    .intro-block { padding: 0 8px; }
+    .intro-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: rgba(163,71,51,0.18); line-height: 1; margin-bottom: 12px; }
+    .intro-block h3 { font-size: 1.15rem; font-weight: 400; color: var(--ink); margin-bottom: 10px; }
+    .intro-block p { font-size: 0.88rem; color: var(--mid); line-height: 1.8; }
+
+    /* ── LABEL ── */
+    .label {
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--terra); margin-bottom: 14px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .label::after { content: ''; flex: 1; max-width: 40px; height: 1px; background: var(--terra); opacity: 0.5; }
+    h2.display { font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 300; line-height: 1.1; }
+    h2.display em { font-style: italic; }
+
+    /* ── ABOUT — image RIGHT, text LEFT ── */
+    #about { display: grid; grid-template-columns: 1fr 1fr; min-height: 640px; }
+    .about-text-col {
+      background: var(--offwhite);
+      display: flex; align-items: center;
+      padding: 80px 72px;
+      order: 1;
+    }
+    .about-text-inner { max-width: 440px; }
+    .about-text-inner h2 { color: var(--ink); margin-bottom: 24px; }
+    .about-text-inner h2 em { color: var(--terra); }
+    .about-text-inner p { color: var(--mid); margin-bottom: 16px; font-size: 0.95rem; line-height: 1.85; }
+    .about-text-inner .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 36px 0; }
+    .stat-val { font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; font-weight: 300; color: var(--terra); line-height: 1; }
+    .stat-label { font-size: 0.75rem; color: var(--mid-l); letter-spacing: 0.06em; margin-top: 4px; }
+    .about-img-col { position: relative; overflow: hidden; min-height: 560px; order: 2; }
+    .about-img-col img { object-position: center; }
+    .about-img-overlay { position: absolute; inset: 0; background: linear-gradient(to left, transparent 60%, var(--offwhite) 100%); }
+
+    /* ── PHOTO BAND ── */
+    .photo-band { display: grid; grid-template-columns: 2fr 1fr 1fr; height: 440px; }
+    .photo-band .band-item { overflow: hidden; position: relative; }
+    .photo-band .band-item img { transition: transform 0.6s ease; }
+    .photo-band .band-item:hover img { transform: scale(1.04); }
+    .band-caption {
+      position: absolute; bottom: 16px; left: 16px;
+      font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(248,244,238,0.65);
+      background: rgba(22,18,14,0.35); padding: 4px 10px; border-radius: 2px;
+    }
+
+    /* ── MENU — on cream ── */
+    #menu { background: var(--cream); padding: 100px 40px; }
+    .menu-header {
+      max-width: 1200px; margin: 0 auto 64px;
+      display: flex; align-items: flex-end; justify-content: space-between; gap: 32px;
+    }
+    .menu-header-left h2 { color: var(--ink); }
+    .menu-header-right p { font-size: 0.9rem; color: var(--mid); max-width: 320px; line-height: 1.8; text-align: right; }
+    .menu-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+    .menu-card { position: relative; overflow: hidden; height: 460px; cursor: pointer; }
+    .menu-card img { transition: transform 0.5s ease; }
+    .menu-card:hover img { transform: scale(1.06); }
+    .menu-card-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(46,36,30,0.88) 0%, rgba(46,36,30,0.10) 55%, transparent 100%);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 32px 28px; transition: background 0.3s;
+    }
+    .menu-card:hover .menu-card-overlay {
+      background: linear-gradient(to top, rgba(127,58,43,0.90) 0%, rgba(46,36,30,0.20) 60%, transparent 100%);
+    }
+    .menu-card-num { font-family: 'Cormorant Garamond', serif; font-size: 0.85rem; color: var(--saffron); letter-spacing: 0.12em; margin-bottom: 8px; }
+    .menu-card h3 { font-size: 1.6rem; font-weight: 400; color: var(--offwhite); margin-bottom: 8px; }
+    .menu-card p { font-size: 0.83rem; color: rgba(248,244,238,0.65); line-height: 1.7; max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .menu-card:hover p { max-height: 80px; }
     .menu-note {
-      text-align: center;
-      margin-top: 36px;
-      color: var(--mid);
-      font-style: italic;
-      font-size: 0.95rem;
+      max-width: 1200px; margin: 40px auto 0;
+      border-top: 1px solid rgba(46,36,30,0.12);
+      padding-top: 28px; display: flex; align-items: center; justify-content: space-between; gap: 24px;
     }
+    .menu-note p { font-size: 0.85rem; color: var(--mid); font-style: italic; }
 
-    /* ─── Gallery ─── */
-    #gallery { background: var(--light); }
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: 220px 220px;
-      gap: 12px;
-      border-radius: var(--radius);
-      overflow: hidden;
+    /* ── GALLERY — DARK bento (contrast) ── */
+    #gallery { background: var(--ink-d); padding: 100px 40px; }
+    .gallery-header { max-width: 1200px; margin: 0 auto 48px; }
+    .gallery-header h2 { color: var(--offwhite); }
+    .gallery-header .label { color: var(--saffron); }
+    .gallery-header .label::after { background: var(--saffron); opacity: 0.5; }
+    .bento {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(12,1fr);
+      grid-template-rows: 260px 260px; gap: 8px;
     }
-    .gallery-item { overflow: hidden; }
-    .gallery-item img { height: 100%; transition: transform 0.35s; }
-    .gallery-item:hover img { transform: scale(1.06); }
-    .gallery-item.tall { grid-row: span 2; }
+    .b1 { grid-column: 1/6;  grid-row: 1/2; }
+    .b2 { grid-column: 6/9;  grid-row: 1/2; }
+    .b3 { grid-column: 9/13; grid-row: 1/3; }
+    .b4 { grid-column: 1/4;  grid-row: 2/3; }
+    .b5 { grid-column: 4/9;  grid-row: 2/3; }
+    .bento-item { overflow: hidden; border-radius: 2px; }
+    .bento-item img { transition: transform 0.5s ease; }
+    .bento-item:hover img { transform: scale(1.05); }
 
-    /* ─── Info ─── */
-    #info { background: var(--white); }
-    .info-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      align-items: start;
-    }
-    .hours-table { width: 100%; border-collapse: collapse; }
-    .hours-table td { padding: 9px 0; color: var(--mid); font-size: 0.95rem; }
-    .hours-table td:first-child { font-weight: 700; color: var(--dark); width: 55%; }
-    .hours-table tr + tr td { border-top: 1px solid var(--sand); }
-    .closed { color: var(--terra) !important; font-style: italic; }
-    .info-item { display: flex; gap: 14px; margin-bottom: 20px; align-items: flex-start; }
-    .info-icon {
-      font-size: 1.4rem;
-      width: 40px; height: 40px;
-      background: var(--light);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-    .info-item p { color: var(--mid); font-size: 0.95rem; }
-    .info-item strong { display: block; color: var(--dark); }
-    .map-embed {
-      margin-top: 20px;
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-    }
-    .map-embed iframe { width: 100%; height: 240px; border: none; }
+    /* ── INFO — offwhite ── */
+    #info { background: var(--offwhite); padding: 100px 40px; }
+    .info-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .info-left h2 { color: var(--ink); margin-bottom: 40px; }
+    .hours-list { list-style: none; }
+    .hours-list li { display: flex; justify-content: space-between; align-items: baseline; padding: 12px 0; border-bottom: 1px solid rgba(46,36,30,0.09); font-size: 0.92rem; }
+    .hours-list li:first-child { border-top: 1px solid rgba(46,36,30,0.09); }
+    .hours-list .day { font-weight: 500; color: var(--ink); }
+    .hours-list .time { color: var(--mid); }
+    .hours-list .closed { color: var(--terra); font-style: italic; }
+    .info-right { display: flex; flex-direction: column; gap: 20px; }
+    .info-card { display: flex; gap: 18px; align-items: flex-start; padding: 22px; background: var(--cream); border-radius: 2px; }
+    .info-card-icon { font-size: 1.3rem; width: 44px; height: 44px; background: var(--sand); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .info-card strong { display: block; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); margin-bottom: 4px; }
+    .info-card p { font-size: 0.9rem; color: var(--mid); line-height: 1.7; }
+    .info-card a { color: var(--terra); font-weight: 600; }
+    .map-wrap { border-radius: 2px; overflow: hidden; height: 190px; }
+    .map-wrap iframe { width: 100%; height: 100%; border: none; }
 
-    /* ─── Reserve ─── */
-    #reserve { background: var(--olive-d); color: #fff; text-align: center; }
-    #reserve .section-title { color: #fff; }
-    #reserve .section-lead { color: rgba(255,255,255,0.8); margin: 0 auto 40px; }
-    #reserve .section-label { color: var(--sand); }
-    .reserve-form {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.18);
-      border-radius: var(--radius);
-      padding: 40px;
-      max-width: 600px;
-      margin: 0 auto;
-      text-align: left;
+    /* ── RESERVE — cream + terracotta panel ── */
+    #reserve { display: grid; grid-template-columns: 1fr 1fr; min-height: 600px; }
+    .reserve-text-col {
+      background: var(--cream); display: flex; align-items: center;
+      padding: 80px 72px;
     }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
-    .form-group { margin-bottom: 16px; }
-    .form-group label {
-      display: block;
-      font-size: 0.82rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.7);
-      margin-bottom: 6px;
-    }
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      width: 100%;
-      padding: 12px 16px;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.25);
-      border-radius: 6px;
-      color: #fff;
-      font-family: 'Lato', sans-serif;
-      font-size: 0.95rem;
-      outline: none;
+    .reserve-text-inner { max-width: 440px; }
+    .reserve-text-inner h2 { color: var(--ink); margin-bottom: 16px; font-size: clamp(2rem,4vw,3.2rem); }
+    .reserve-text-inner h2 em { color: var(--terra); }
+    .reserve-text-inner p { font-size: 0.92rem; color: var(--mid); line-height: 1.85; margin-bottom: 32px; }
+    .reserve-phone { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; color: var(--terra); margin-bottom: 28px; letter-spacing: 0.02em; }
+    .reserve-phone small { display: block; font-family: 'Manrope', sans-serif; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid-l); margin-bottom: 4px; }
+    .reserve-form-col { background: var(--terra); display: flex; align-items: center; padding: 80px 64px; }
+    .reserve-form-inner { width: 100%; max-width: 440px; }
+    .reserve-form-inner .label { color: rgba(248,244,238,0.5); }
+    .reserve-form-inner .label::after { background: rgba(248,244,238,0.3); }
+    .reserve-form-inner h2 { color: var(--offwhite); margin-bottom: 32px; font-size: clamp(1.8rem,3vw,2.6rem); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+    .form-group { margin-bottom: 12px; }
+    .form-group label { display: block; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(248,244,238,0.5); margin-bottom: 6px; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: 11px 14px;
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(248,244,238,0.22);
+      border-radius: 2px; color: var(--offwhite);
+      font-family: 'Manrope', sans-serif; font-size: 0.9rem; outline: none;
       transition: border-color 0.2s, background 0.2s;
     }
-    .form-group input::placeholder,
-    .form-group textarea::placeholder { color: rgba(255,255,255,0.45); }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: var(--sand);
-      background: rgba(255,255,255,0.18);
-    }
-    .form-group select option { background: var(--olive-d); color: #fff; }
-    .form-group textarea { resize: vertical; min-height: 90px; }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(248,244,238,0.3); }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--saffron); background: rgba(255,255,255,0.16); }
+    .form-group select option { background: var(--terra-d); }
+    .form-group textarea { resize: none; height: 72px; }
     .form-submit {
-      width: 100%;
-      padding: 15px;
-      background: var(--terra);
-      color: #fff;
-      border: none;
-      border-radius: 40px;
-      font-size: 1rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.18s;
-      margin-top: 8px;
+      width: 100%; padding: 14px; background: var(--ink-d); color: var(--offwhite);
+      border: none; border-radius: 2px; font-family: 'Manrope', sans-serif;
+      font-size: 0.76rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      cursor: pointer; margin-top: 8px; transition: background 0.2s, transform 0.15s;
     }
-    .form-submit:hover { background: var(--terra-d); transform: translateY(-2px); }
-    .reserve-alt { margin-top: 24px; text-align: center; color: rgba(255,255,255,0.7); font-size: 0.9rem; }
-    .reserve-alt a { color: var(--sand); font-weight: 700; }
+    .form-submit:hover { background: #000; transform: translateY(-1px); }
 
-    /* ─── Footer ─── */
+    /* ── FOOTER ── */
     footer {
-      background: var(--dark);
-      color: rgba(255,255,255,0.55);
-      text-align: center;
-      padding: 36px 24px;
-      font-size: 0.85rem;
+      background: var(--ink-d); padding: 56px 40px 36px;
+      display: grid; grid-template-columns: 1fr auto 1fr;
+      gap: 40px; align-items: start;
+      border-top: 3px solid var(--terra);
     }
-    footer strong { color: rgba(255,255,255,0.85); }
-    .footer-links { margin-top: 12px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-    .footer-links a { color: rgba(255,255,255,0.55); transition: color 0.2s; }
-    .footer-links a:hover { color: #fff; }
+    .footer-brand .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sand); margin-bottom: 10px; }
+    .footer-brand .logo em { font-style: italic; color: var(--saffron); }
+    .footer-brand p { font-size: 0.82rem; color: rgba(239,231,218,0.35); line-height: 1.8; max-width: 260px; }
+    .footer-center { text-align: center; display: flex; flex-direction: column; gap: 6px; }
+    .footer-center a { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(239,231,218,0.35); transition: color 0.2s; }
+    .footer-center a:hover { color: var(--saffron); }
+    .footer-right { text-align: right; font-size: 0.82rem; color: rgba(239,231,218,0.35); line-height: 1.9; }
+    .footer-right a { color: var(--terra); }
+    .footer-copy { grid-column: 1/-1; text-align: center; padding-top: 28px; border-top: 1px solid rgba(239,231,218,0.06); font-size: 0.72rem; color: rgba(239,231,218,0.2); letter-spacing: 0.06em; }
 
-    /* ─── Responsive ─── */
-    @media (max-width: 760px) {
-      .about-grid, .info-grid { grid-template-columns: 1fr; }
-      .about-img { height: 260px; }
-      .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
-      .gallery-item.tall { grid-row: span 1; }
-      .form-row { grid-template-columns: 1fr; }
-      nav { padding: 0 16px; }
-      .nav-links { gap: 16px; }
-    }
-    @media (max-width: 480px) {
-      .nav-links { display: none; }
-      .gallery-grid { grid-template-columns: 1fr; }
-    }
-
-    /* ─── Hidden lang layers ─── */
+    /* ── LANG ── */
     [data-lang] { display: none; }
     [data-lang].active { display: block; }
-    .inline-lang { display: none; }
-    .inline-lang.active { display: inline; }
+    .il { display: none; }
+    .il.active { display: inline; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      #about { grid-template-columns: 1fr; }
+      .about-text-col { order: 1; padding: 56px 32px; }
+      .about-img-col { order: 2; height: 320px; min-height: 0; }
+      #reserve { grid-template-columns: 1fr; }
+      .reserve-text-col { padding: 56px 32px; }
+      .reserve-form-col { padding: 56px 32px; }
+      .menu-grid { grid-template-columns: 1fr; }
+      .menu-card { height: 340px; }
+      .photo-band { grid-template-columns: 1fr 1fr; height: auto; grid-template-rows: 220px 220px; }
+      .photo-band .band-item:last-child { grid-column: 1/-1; }
+      .intro-inner { grid-template-columns: 1fr; gap: 40px; }
+      .intro-divider { display: none; }
+      .bento { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3,200px); }
+      .b1,.b2,.b3,.b4,.b5 { grid-column: auto; grid-row: auto; }
+      .b3 { grid-row: span 1; }
+      footer { grid-template-columns: 1fr; }
+      .footer-right { text-align: left; }
+      nav { padding: 0 20px; }
+      .hero-content { flex-direction: column; align-items: flex-start; padding: 0 24px; }
+      .hero-right { max-width: 100%; text-align: left; }
+      .info-inner { grid-template-columns: 1fr; gap: 48px; }
+      .menu-header { flex-direction: column; align-items: flex-start; }
+      .menu-header-right p { text-align: left; }
+    }
+    @media (max-width: 560px) {
+      .nav-links { display: none; }
+      #gallery, #menu, #intro, #info { padding: 64px 20px; }
+      .reserve-form-col, .reserve-text-col { padding: 48px 20px; }
+      footer { padding: 40px 20px 28px; }
+    }
   </style>
 </head>
 <body>
 
-<!-- ═══ Language Bar ═══ -->
+<!-- LANG BAR -->
 <div id="lang-bar">
-  <button class="lang-btn active" onclick="setLang('nl')">🇳🇱 NL</button>
-  <button class="lang-btn" onclick="setLang('en')">🇬🇧 EN</button>
-  <button class="lang-btn" onclick="setLang('es')">🇪🇸 ES</button>
+  <button class="lang-btn active" onclick="setLang('nl')">NL</button>
+  <button class="lang-btn" onclick="setLang('en')">EN</button>
+  <button class="lang-btn" onclick="setLang('es')">ES</button>
 </div>
 
-<!-- ═══ Nav ═══ -->
-<nav>
-  <div class="nav-logo">Bon <span>Vent</span></div>
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-logo">Bon <em>Vent</em></div>
   <ul class="nav-links">
-    <li><a href="#about"><span class="inline-lang active" data-nav="nl">Over ons</span><span class="inline-lang" data-nav="en">About</span><span class="inline-lang" data-nav="es">Nosotros</span></a></li>
-    <li><a href="#menu"><span class="inline-lang active" data-nav="nl">Menu</span><span class="inline-lang" data-nav="en">Menu</span><span class="inline-lang" data-nav="es">Carta</span></a></li>
-    <li><a href="#gallery"><span class="inline-lang active" data-nav="nl">Foto's</span><span class="inline-lang" data-nav="en">Gallery</span><span class="inline-lang" data-nav="es">Galería</span></a></li>
-    <li><a href="#info"><span class="inline-lang active" data-nav="nl">Info</span><span class="inline-lang" data-nav="en">Info</span><span class="inline-lang" data-nav="es">Info</span></a></li>
-    <li><a href="#reserve" class="btn btn-primary" style="padding:8px 22px;font-size:0.8rem;">
-      <span class="inline-lang active" data-nav="nl">Reserveren</span><span class="inline-lang" data-nav="en">Reserve</span><span class="inline-lang" data-nav="es">Reservar</span>
-    </a></li>
+    <li><a href="#about"><span class="il active" data-nav="nl">Over ons</span><span class="il" data-nav="en">About</span><span class="il" data-nav="es">Nosotros</span></a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#gallery"><span class="il active" data-nav="nl">Foto's</span><span class="il" data-nav="en">Gallery</span><span class="il" data-nav="es">Galería</span></a></li>
+    <li><a href="#info">Info</a></li>
+    <li><a href="#reserve" class="nav-reserve"><span class="il active" data-nav="nl">Reserveren</span><span class="il" data-nav="en">Reserve</span><span class="il" data-nav="es">Reservar</span></a></li>
   </ul>
 </nav>
 
-<!-- ═══ Hero ═══ -->
+<!-- HERO -->
 <section id="hero">
+  <div class="hero-bg"><img src="vooraanzicht.jpg" alt="Bon Vent" /></div>
+  <div class="hero-overlay"></div>
   <div class="hero-content">
-    <div data-lang="nl" class="active">
-      <h1>Een smaak van de Costa Blanca</h1>
-      <p class="tagline">Mediterraanse keuken in het hart van het Jalón-dal</p>
-      <a href="#reserve" class="btn btn-primary">Reserveer een tafel</a>
-      <a href="#menu" class="btn btn-outline">Bekijk ons menu</a>
+    <div class="hero-left">
+      <div class="hero-eyebrow">Jalón · Costa Blanca · Alicante</div>
+      <div data-lang="nl" class="active"><h1>Bergen,<br><em>smaken,</em><br>verhalen</h1></div>
+      <div data-lang="en"><h1>Mountains,<br><em>flavours,</em><br>stories</h1></div>
+      <div data-lang="es"><h1>Montañas,<br><em>sabores,</em><br>historias</h1></div>
     </div>
-    <div data-lang="en">
-      <h1>A Taste of the Costa Blanca</h1>
-      <p class="tagline">Mediterranean cuisine in the heart of the Jalón Valley</p>
-      <a href="#reserve" class="btn btn-primary">Reserve a Table</a>
-      <a href="#menu" class="btn btn-outline">View our Menu</a>
+    <div class="hero-right">
+      <div data-lang="nl" class="active">
+        <p>Mediterraanse bergkeuken in het hart van het Jalón-dal. Eerlijk, seizoensgebonden en bereidt met passie.</p>
+        <a href="#reserve" class="btn btn-primary">Reserveer een tafel</a>
+      </div>
+      <div data-lang="en">
+        <p>Mediterranean mountain cuisine in the heart of the Jalón Valley. Honest, seasonal and cooked with passion.</p>
+        <a href="#reserve" class="btn btn-primary">Reserve a table</a>
+      </div>
+      <div data-lang="es">
+        <p>Cocina mediterránea de montaña en el corazón del Valle del Jalón. Honesta, de temporada y preparada con pasión.</p>
+        <a href="#reserve" class="btn btn-primary">Reservar una mesa</a>
+      </div>
     </div>
-    <div data-lang="es">
-      <h1>Un Sabor de la Costa Blanca</h1>
-      <p class="tagline">Cocina mediterránea en el corazón del valle del Jalón</p>
-      <a href="#reserve" class="btn btn-primary">Reservar una Mesa</a>
-      <a href="#menu" class="btn btn-outline">Ver nuestra Carta</a>
+  </div>
+  <div class="hero-scroll"><span></span>Scroll</div>
+</section>
+
+<!-- INTRO STRIP -->
+<section id="intro">
+  <div class="intro-inner">
+    <div class="intro-block">
+      <div class="intro-num">01</div>
+      <h3><span class="il active" data-nav="nl">Lokale ingrediënten</span><span class="il" data-nav="en">Local ingredients</span><span class="il" data-nav="es">Ingredientes locales</span></h3>
+      <p><span class="il active" data-nav="nl">Verse producten van het Jalón-dal — groenten, olijfolie en kruiden rechtstreeks van de boer.</span><span class="il" data-nav="en">Fresh produce from the Jalón Valley — vegetables, olive oil and herbs straight from the farm.</span><span class="il" data-nav="es">Productos frescos del Valle del Jalón — verduras, aceite de oliva y hierbas directamente del campo.</span></p>
+    </div>
+    <div class="intro-divider"></div>
+    <div class="intro-block">
+      <div class="intro-num">02</div>
+      <h3><span class="il active" data-nav="nl">Houtoven & grill</span><span class="il" data-nav="en">Wood oven & grill</span><span class="il" data-nav="es">Horno de leña y parrilla</span></h3>
+      <p><span class="il active" data-nav="nl">Onze signatuurgerechten worden bereid op open vuur — rook, hitte en karakter.</span><span class="il" data-nav="en">Our signature dishes are cooked over open fire — smoke, heat and character.</span><span class="il" data-nav="es">Nuestros platos estrella se cocinan al fuego — humo, calor y carácter.</span></p>
+    </div>
+    <div class="intro-divider"></div>
+    <div class="intro-block">
+      <div class="intro-num">03</div>
+      <h3><span class="il active" data-nav="nl">Uitzicht & terrassen</span><span class="il" data-nav="en">Views & terraces</span><span class="il" data-nav="es">Vistas y terrazas</span></h3>
+      <p><span class="il active" data-nav="nl">Dineer met het panorama van de Bernia-bergkam als achtergrond. Elke tafel een beleving.</span><span class="il" data-nav="en">Dine with the Bernia ridge as your backdrop. Every table an experience.</span><span class="il" data-nav="es">Cene con la sierra de Bernia de fondo. Cada mesa, una experiencia.</span></p>
     </div>
   </div>
 </section>
 
-<!-- ═══ About ═══ -->
+<!-- ABOUT — text left, image right -->
 <section id="about">
-  <div class="section-inner">
-    <div class="about-grid">
-      <div class="about-img">
-        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80" alt="Restaurante Bon Vent" loading="lazy" />
+  <div class="about-text-col">
+    <div class="about-text-inner">
+      <div class="label"><span class="il active" data-nav="nl">Ons verhaal</span><span class="il" data-nav="en">Our story</span><span class="il" data-nav="es">Nuestra historia</span></div>
+      <div data-lang="nl" class="active">
+        <h2 class="display">Waar de bergen<br><em>de zee ontmoeten</em></h2>
+        <p>Bon Vent staat aan de CV-749, midden in het groene Jalón-dal. Een restaurant dat geboren is uit liefde voor de plek — de rode aarde, de amandel- en olijfbomen, de bijna tastbare stilte van de heuvels.</p>
+        <p>We koken zoals de streek het vraagt: eerlijk, seizoensgebonden, met vuur en geduld.</p>
+        <div class="stats">
+          <div><div class="stat-val">+15</div><div class="stat-label">Jaar ervaring</div></div>
+          <div><div class="stat-val">100%</div><div class="stat-label">Lokale producten</div></div>
+        </div>
+        <a href="#reserve" class="btn btn-primary">Reserveer nu</a>
       </div>
-      <div class="about-text">
-        <div data-lang="nl" class="active">
-          <p class="section-label">Over ons</p>
-          <h2 class="section-title">Hartelijk welkom bij Bon Vent</h2>
-          <div class="divider"></div>
-          <p>Restaurante Bon Vent is gelegen aan de CV-749 in het charmante dorp Jalón, midden in het groene Jalón-dal aan de Costa Blanca. Een plek waar verse lokale producten, mediterrane tradities en oprechte gastvrijheid samenkomen.</p>
-          <p>Ons team verwelkomt u voor een ontspannen lunch of diner, omringd door de rust van de Alicantijnse heuvels. Van tapas tot dagschotels — alles wordt met passie bereid.</p>
-          <a href="#reserve" class="btn btn-primary" style="margin-top:8px;">Reserveer nu</a>
+      <div data-lang="en">
+        <h2 class="display">Where mountains<br><em>meet the sea</em></h2>
+        <p>Bon Vent sits on the CV-749, in the lush Jalón Valley. A restaurant born from love of place — red earth, almond and olive trees, the almost tangible silence of the hills.</p>
+        <p>We cook as the region demands: honest, seasonal, with fire and patience.</p>
+        <div class="stats">
+          <div><div class="stat-val">+15</div><div class="stat-label">Years experience</div></div>
+          <div><div class="stat-val">100%</div><div class="stat-label">Local produce</div></div>
         </div>
-        <div data-lang="en">
-          <p class="section-label">About Us</p>
-          <h2 class="section-title">Welcome to Bon Vent</h2>
-          <div class="divider"></div>
-          <p>Restaurante Bon Vent is located on the CV-749 in the charming village of Jalón, in the heart of the lush Jalón Valley on the Costa Blanca. A place where fresh local produce, Mediterranean traditions and genuine hospitality come together.</p>
-          <p>Our team welcomes you for a relaxed lunch or dinner, surrounded by the tranquillity of the Alicante hills. From tapas to daily specials — everything is prepared with passion.</p>
-          <a href="#reserve" class="btn btn-primary" style="margin-top:8px;">Reserve Now</a>
+        <a href="#reserve" class="btn btn-primary">Reserve now</a>
+      </div>
+      <div data-lang="es">
+        <h2 class="display">Donde la montaña<br><em>se encuentra con el mar</em></h2>
+        <p>Bon Vent se encuentra en la CV-749, en el fértil Valle del Jalón. Un restaurante nacido del amor por este lugar — tierra roja, almendros y olivos.</p>
+        <p>Cocinamos como pide la tierra: honesto, de temporada, con fuego y paciencia.</p>
+        <div class="stats">
+          <div><div class="stat-val">+15</div><div class="stat-label">Años de experiencia</div></div>
+          <div><div class="stat-val">100%</div><div class="stat-label">Productos locales</div></div>
         </div>
-        <div data-lang="es">
-          <p class="section-label">Sobre Nosotros</p>
-          <h2 class="section-title">Bienvenido a Bon Vent</h2>
-          <div class="divider"></div>
-          <p>El Restaurante Bon Vent está situado en la CV-749, en el encantador pueblo de Jalón, en el corazón del fértil Valle del Jalón en la Costa Blanca. Un lugar donde los productos locales frescos, las tradiciones mediterráneas y la hospitalidad genuina se unen.</p>
-          <p>Nuestro equipo le da la bienvenida para un tranquilo almuerzo o cena, rodeado por la serenidad de las colinas de Alicante. Desde tapas hasta platos del día — todo se prepara con pasión.</p>
-          <a href="#reserve" class="btn btn-primary" style="margin-top:8px;">Reservar Ahora</a>
-        </div>
+        <a href="#reserve" class="btn btn-primary">Reservar ahora</a>
       </div>
     </div>
   </div>
+  <div class="about-img-col">
+    <img src="binnen%20in%20restaurant.jpg" alt="Interieur Bon Vent" />
+    <div class="about-img-overlay"></div>
+  </div>
 </section>
 
-<!-- ═══ Menu ═══ -->
+<!-- PHOTO BAND -->
+<div class="photo-band">
+  <div class="band-item">
+    <img src="uitzicht.jpg" alt="Uitzicht" />
+    <span class="band-caption"><span class="il active" data-nav="nl">Uitzicht dal</span><span class="il" data-nav="en">Valley view</span><span class="il" data-nav="es">Vista del valle</span></span>
+  </div>
+  <div class="band-item">
+    <img src="bar.jpg" alt="Bar" />
+    <span class="band-caption">Bar</span>
+  </div>
+  <div class="band-item">
+    <img src="view-from-restaurant.jpg" alt="Terras" />
+    <span class="band-caption"><span class="il active" data-nav="nl">Terras</span><span class="il" data-nav="en">Terrace</span><span class="il" data-nav="es">Terraza</span></span>
+  </div>
+</div>
+
+<!-- MENU -->
 <section id="menu">
-  <div class="section-inner">
-    <div data-lang="nl" class="active">
-      <p class="section-label">Onze Keuken</p>
-      <h2 class="section-title">Menu & Specialiteiten</h2>
-      <div class="divider"></div>
-      <p class="section-lead">Verse mediterrane gerechten bereid met seizoensproducten uit de regio.</p>
+  <div class="menu-header">
+    <div class="menu-header-left">
+      <div class="label"><span class="il active" data-nav="nl">Onze keuken</span><span class="il" data-nav="en">Our kitchen</span><span class="il" data-nav="es">Nuestra cocina</span></div>
+      <h2 class="display"><span class="il active" data-nav="nl">Eerlijk eten,<br><em>echt gemaakt</em></span><span class="il" data-nav="en">Honest food,<br><em>truly made</em></span><span class="il" data-nav="es">Comida honesta,<br><em>de verdad</em></span></h2>
     </div>
-    <div data-lang="en">
-      <p class="section-label">Our Kitchen</p>
-      <h2 class="section-title">Menu & Specialities</h2>
-      <div class="divider"></div>
-      <p class="section-lead">Fresh Mediterranean dishes prepared with seasonal produce from the region.</p>
+    <div class="menu-header-right">
+      <p><span class="il active" data-nav="nl">Het menu wisselt met de seizoenen. Bel ons voor de actuele kaart of kom langs en laat u verrassen.</span><span class="il" data-nav="en">The menu changes with the seasons. Call for the current selection or simply come and be surprised.</span><span class="il" data-nav="es">La carta cambia con las estaciones. Llámenos o venga y déjese sorprender.</span></p>
     </div>
-    <div data-lang="es">
-      <p class="section-label">Nuestra Cocina</p>
-      <h2 class="section-title">Carta y Especialidades</h2>
-      <div class="divider"></div>
-      <p class="section-lead">Platos mediterráneos frescos elaborados con productos de temporada de la región.</p>
-    </div>
-
-    <div class="menu-grid">
-      <!-- Card 1 -->
-      <div class="menu-card">
-        <div class="menu-card-img">
-          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80" alt="Starters" loading="lazy" />
-        </div>
-        <div class="menu-card-body">
-          <div data-lang="nl" class="active"><h3>Voorgerechten</h3><p>Verse tapas, gegrilde groenten en lokale kazen — de perfecte start van uw maaltijd.</p></div>
-          <div data-lang="en"><h3>Starters</h3><p>Fresh tapas, grilled vegetables and local cheeses — the perfect start to your meal.</p></div>
-          <div data-lang="es"><h3>Entrantes</h3><p>Tapas frescas, verduras a la plancha y quesos locales — el inicio perfecto de su comida.</p></div>
-        </div>
-      </div>
-      <!-- Card 2 -->
-      <div class="menu-card">
-        <div class="menu-card-img">
-          <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600&q=80" alt="Main courses" loading="lazy" />
-        </div>
-        <div class="menu-card-body">
-          <div data-lang="nl" class="active"><h3>Hoofdgerechten</h3><p>Verse vis van de Middellandse Zee, vlees van de grill en dagelijks wisselende chef-specials.</p></div>
-          <div data-lang="en"><h3>Main Courses</h3><p>Fresh Mediterranean fish, grilled meats and daily changing chef's specials.</p></div>
-          <div data-lang="es"><h3>Platos Principales</h3><p>Pescado fresco del Mediterráneo, carnes a la brasa y especiales del chef que cambian cada día.</p></div>
-        </div>
-      </div>
-      <!-- Card 3 -->
-      <div class="menu-card">
-        <div class="menu-card-img">
-          <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=600&q=80" alt="Desserts" loading="lazy" />
-        </div>
-        <div class="menu-card-body">
-          <div data-lang="nl" class="active"><h3>Nagerechten & Dranken</h3><p>Huisgemaakte desserts en een selectie Spaanse wijnen en lokale dranken.</p></div>
-          <div data-lang="en"><h3>Desserts & Drinks</h3><p>Home-made desserts and a selection of Spanish wines and local beverages.</p></div>
-          <div data-lang="es"><h3>Postres y Bebidas</h3><p>Postres caseros y una selección de vinos españoles y bebidas locales.</p></div>
-        </div>
+  </div>
+  <div class="menu-grid">
+    <div class="menu-card">
+      <img src="hapjes.jpg" alt="Voorgerechten" />
+      <div class="menu-card-overlay">
+        <div class="menu-card-num">01</div>
+        <h3><span class="il active" data-nav="nl">Voorgerechten</span><span class="il" data-nav="en">Starters</span><span class="il" data-nav="es">Entrantes</span></h3>
+        <p><span class="il active" data-nav="nl">Verse tapas, lokale kazen en gegrilde groenten van het seizoen.</span><span class="il" data-nav="en">Fresh tapas, local cheeses and grilled seasonal vegetables.</span><span class="il" data-nav="es">Tapas frescas, quesos locales y verduras a la plancha.</span></p>
       </div>
     </div>
-    <p class="menu-note">
-      <span data-lang="nl" class="active">📋 Voor het volledige menu, bel ons of reserveer een tafel. Het menu wisselt per seizoen.</span>
-      <span data-lang="en">📋 For the full menu, call us or reserve a table. The menu changes with the seasons.</span>
-      <span data-lang="es">📋 Para la carta completa, llámenos o reserve una mesa. El menú cambia según la temporada.</span>
-    </p>
+    <div class="menu-card">
+      <img src="arroz-al-horno-de-lena.jpg" alt="Hoofdgerechten" />
+      <div class="menu-card-overlay">
+        <div class="menu-card-num">02</div>
+        <h3><span class="il active" data-nav="nl">Hoofdgerechten</span><span class="il" data-nav="en">Main courses</span><span class="il" data-nav="es">Platos principales</span></h3>
+        <p><span class="il active" data-nav="nl">Arroz al horno, fideuà de pato en verse vis — bereid op houtskool en vuur.</span><span class="il" data-nav="en">Arroz al horno, fideuà de pato and fresh fish — cooked on charcoal and fire.</span><span class="il" data-nav="es">Arroz al horno, fideuà de pato y pescado fresco — a la leña y al fuego.</span></p>
+      </div>
+    </div>
+    <div class="menu-card">
+      <img src="homemade%20postres.jpg" alt="Nagerechten" />
+      <div class="menu-card-overlay">
+        <div class="menu-card-num">03</div>
+        <h3><span class="il active" data-nav="nl">Nagerechten</span><span class="il" data-nav="en">Desserts</span><span class="il" data-nav="es">Postres</span></h3>
+        <p><span class="il active" data-nav="nl">Huisgemaakte desserts en een selectie lokale wijnen en ambachtelijke dranken.</span><span class="il" data-nav="en">Home-made desserts and a selection of local wines and artisan drinks.</span><span class="il" data-nav="es">Postres caseros y una selección de vinos locales y bebidas artesanas.</span></p>
+      </div>
+    </div>
+  </div>
+  <div class="menu-note">
+    <p><span class="il active" data-nav="nl">✦ Menu wisselend per seizoen — vraag naar de dagelijkse aanbevelingen</span><span class="il" data-nav="en">✦ Menu changes seasonally — ask about our daily recommendations</span><span class="il" data-nav="es">✦ Carta de temporada — pregunte por nuestras recomendaciones del día</span></p>
+    <a href="#reserve" class="btn btn-terra-outline"><span class="il active" data-nav="nl">Tafel reserveren</span><span class="il" data-nav="en">Reserve a table</span><span class="il" data-nav="es">Reservar mesa</span></a>
   </div>
 </section>
 
-<!-- ═══ Gallery ═══ -->
+<!-- GALLERY — dark bento -->
 <section id="gallery">
-  <div class="section-inner">
-    <div data-lang="nl" class="active">
-      <p class="section-label">Sfeer & Beleving</p>
-      <h2 class="section-title">Foto's</h2>
-      <div class="divider"></div>
-    </div>
-    <div data-lang="en">
-      <p class="section-label">Atmosphere & Experience</p>
-      <h2 class="section-title">Gallery</h2>
-      <div class="divider"></div>
-    </div>
-    <div data-lang="es">
-      <p class="section-label">Ambiente y Experiencia</p>
-      <h2 class="section-title">Galería</h2>
-      <div class="divider"></div>
-    </div>
-    <div class="gallery-grid">
-      <div class="gallery-item tall">
-        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80" alt="Restaurant interior" loading="lazy" />
-      </div>
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600&q=80" alt="Dish" loading="lazy" />
-      </div>
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=600&q=80" alt="Wine" loading="lazy" />
-      </div>
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&q=80" alt="Terrace" loading="lazy" />
-      </div>
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80" alt="Grilled dish" loading="lazy" />
-      </div>
-    </div>
+  <div class="gallery-header">
+    <div class="label" style="color:var(--saffron)"><span class="il active" data-nav="nl">Sfeer & beleving</span><span class="il" data-nav="en">Atmosphere</span><span class="il" data-nav="es">Ambiente</span><span style="flex:none;width:40px;height:1px;background:var(--saffron);opacity:0.5;"></span></div>
+    <h2 class="display" style="color:var(--offwhite)"><span class="il active" data-nav="nl">Een plek<br><em>om te blijven</em></span><span class="il" data-nav="en">A place<br><em>to stay</em></span><span class="il" data-nav="es">Un lugar<br><em>para quedarse</em></span></h2>
+  </div>
+  <div class="bento">
+    <div class="bento-item b1"><img src="restaurante-bon-vent.jpg" alt="Restaurant" /></div>
+    <div class="bento-item b2"><img src="fideua-de-pato.jpg" alt="Fideuà de pato" /></div>
+    <div class="bento-item b3"><img src="view%20from%20terras%202.jpg" alt="Uitzicht terras" /></div>
+    <div class="bento-item b4"><img src="buena-parrilla-de-carne.jpg" alt="Gegrild vlees" /></div>
+    <div class="bento-item b5"><img src="ensalada.jpg" alt="Ensalada" /></div>
   </div>
 </section>
 
-<!-- ═══ Info ═══ -->
+<!-- INFO -->
 <section id="info">
-  <div class="section-inner">
-    <div data-lang="nl" class="active">
-      <p class="section-label">Praktisch</p>
-      <h2 class="section-title">Openingstijden & Locatie</h2>
-      <div class="divider"></div>
+  <div class="info-inner">
+    <div class="info-left">
+      <div class="label"><span class="il active" data-nav="nl">Praktisch</span><span class="il" data-nav="en">Practical info</span><span class="il" data-nav="es">Información práctica</span></div>
+      <div data-lang="nl" class="active">
+        <h2 class="display" style="margin-bottom:36px">Openingstijden<br><em>& locatie</em></h2>
+        <ul class="hours-list">
+          <li><span class="day">Maandag</span><span class="time closed">Gesloten</span></li>
+          <li><span class="day">Dinsdag – Vrijdag</span><span class="time">12:00–15:30 · 19:00–22:30</span></li>
+          <li><span class="day">Zaterdag</span><span class="time">12:00–15:30 · 19:00–22:30</span></li>
+          <li><span class="day">Zondag</span><span class="time">12:00–15:30</span></li>
+        </ul>
+        <p style="margin-top:12px;font-size:0.8rem;color:var(--mid-l);font-style:italic;">* Tijden kunnen variëren — bel om te bevestigen</p>
+      </div>
+      <div data-lang="en">
+        <h2 class="display" style="margin-bottom:36px">Opening hours<br><em>& location</em></h2>
+        <ul class="hours-list">
+          <li><span class="day">Monday</span><span class="time closed">Closed</span></li>
+          <li><span class="day">Tuesday – Friday</span><span class="time">12:00–15:30 · 19:00–22:30</span></li>
+          <li><span class="day">Saturday</span><span class="time">12:00–15:30 · 19:00–22:30</span></li>
+          <li><span class="day">Sunday</span><span class="time">12:00–15:30</span></li>
+        </ul>
+        <p style="margin-top:12px;font-size:0.8rem;color:var(--mid-l);font-style:italic;">* Hours may vary — call ahead to confirm</p>
+      </div>
+      <div data-lang="es">
+        <h2 class="display" style="margin-bottom:36px">Horarios<br><em>y ubicación</em></h2>
+        <ul class="hours-list">
+          <li><span class="day">Lunes</span><span class="time closed">Cerrado</span></li>
+          <li><span class="day">Martes – Viernes</span><span class="time">12:00–15:30 · 19:00–22:30</span></li>
+          <li><span class="day">Sábado</span><span class="time">12:00–15:30 · 19:00–22:30</span></li>
+          <li><span class="day">Domingo</span><span class="time">12:00–15:30</span></li>
+        </ul>
+        <p style="margin-top:12px;font-size:0.8rem;color:var(--mid-l);font-style:italic;">* Los horarios pueden variar — llame para confirmar</p>
+      </div>
     </div>
-    <div data-lang="en">
-      <p class="section-label">Practical Info</p>
-      <h2 class="section-title">Opening Hours & Location</h2>
-      <div class="divider"></div>
-    </div>
-    <div data-lang="es">
-      <p class="section-label">Información Práctica</p>
-      <h2 class="section-title">Horarios y Ubicación</h2>
-      <div class="divider"></div>
-    </div>
-    <div class="info-grid">
-      <div>
-        <!-- Hours NL -->
-        <div data-lang="nl" class="active">
-          <h3 style="font-family:'Lato',sans-serif;font-size:1rem;font-weight:700;margin-bottom:16px;letter-spacing:0.04em;text-transform:uppercase;color:var(--mid);">Openingstijden</h3>
-          <table class="hours-table">
-            <tr><td>Maandag</td><td class="closed">Gesloten</td></tr>
-            <tr><td>Dinsdag – Vrijdag</td><td>12:00 – 15:30 &amp; 19:00 – 22:30</td></tr>
-            <tr><td>Zaterdag</td><td>12:00 – 15:30 &amp; 19:00 – 22:30</td></tr>
-            <tr><td>Zondag</td><td>12:00 – 15:30</td></tr>
-          </table>
-          <p style="margin-top:14px;font-size:0.85rem;color:var(--mid);font-style:italic;">* Openingstijden kunnen variëren. Bel voor de zekerheid.</p>
-        </div>
-        <!-- Hours EN -->
-        <div data-lang="en">
-          <h3 style="font-family:'Lato',sans-serif;font-size:1rem;font-weight:700;margin-bottom:16px;letter-spacing:0.04em;text-transform:uppercase;color:var(--mid);">Opening Hours</h3>
-          <table class="hours-table">
-            <tr><td>Monday</td><td class="closed">Closed</td></tr>
-            <tr><td>Tuesday – Friday</td><td>12:00 – 15:30 &amp; 19:00 – 22:30</td></tr>
-            <tr><td>Saturday</td><td>12:00 – 15:30 &amp; 19:00 – 22:30</td></tr>
-            <tr><td>Sunday</td><td>12:00 – 15:30</td></tr>
-          </table>
-          <p style="margin-top:14px;font-size:0.85rem;color:var(--mid);font-style:italic;">* Hours may vary. Call ahead to confirm.</p>
-        </div>
-        <!-- Hours ES -->
-        <div data-lang="es">
-          <h3 style="font-family:'Lato',sans-serif;font-size:1rem;font-weight:700;margin-bottom:16px;letter-spacing:0.04em;text-transform:uppercase;color:var(--mid);">Horario</h3>
-          <table class="hours-table">
-            <tr><td>Lunes</td><td class="closed">Cerrado</td></tr>
-            <tr><td>Martes – Viernes</td><td>12:00 – 15:30 &amp; 19:00 – 22:30</td></tr>
-            <tr><td>Sábado</td><td>12:00 – 15:30 &amp; 19:00 – 22:30</td></tr>
-            <tr><td>Domingo</td><td>12:00 – 15:30</td></tr>
-          </table>
-          <p style="margin-top:14px;font-size:0.85rem;color:var(--mid);font-style:italic;">* Los horarios pueden variar. Llame para confirmar.</p>
-        </div>
-
-        <!-- Contact -->
-        <div style="margin-top:36px;">
-          <div class="info-item">
-            <div class="info-icon">📍</div>
-            <div>
-              <strong>Restaurante Bon Vent</strong>
-              <p>CV-749, nº 5<br>03727 Jalón (Xaló), Alicante<br>España</p>
-            </div>
-          </div>
-          <div class="info-item">
-            <div class="info-icon">📞</div>
-            <div>
-              <strong>Telefoon</strong>
-              <p><a href="tel:+34696659554" style="color:var(--terra);font-weight:700;">+34 696 65 95 54</a></p>
-            </div>
-          </div>
-          <div class="info-item">
-            <div class="info-icon">✉️</div>
-            <div>
-              <strong>E-mail</strong>
-              <p><a href="mailto:info@bonvent-jalon.es" style="color:var(--terra);font-weight:700;">info@bonvent-jalon.es</a></p>
-            </div>
-          </div>
+    <div class="info-right">
+      <div class="info-card">
+        <div class="info-card-icon">📍</div>
+        <div>
+          <strong><span class="il active" data-nav="nl">Adres</span><span class="il" data-nav="en">Address</span><span class="il" data-nav="es">Dirección</span></strong>
+          <p>CV-749, nº 5 · 03727 Jalón (Xaló)<br>Alicante · España</p>
         </div>
       </div>
-
-      <div>
-        <div class="map-embed">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3127.0!2d-0.0250!3d38.7350!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6216b3f2d4b999%3A0x6b7d7b2b2b2b2b2b!2sRestaurante%20Bon%20Vent%2C%20CV-749%2C%2003727%20Jal%C3%B3n%2C%20Alicante!5e0!3m2!1snl!2ses!4v1"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            title="Bon Vent kaart">
-          </iframe>
+      <div class="info-card">
+        <div class="info-card-icon">📞</div>
+        <div>
+          <strong><span class="il active" data-nav="nl">Telefoon</span><span class="il" data-nav="en">Phone</span><span class="il" data-nav="es">Teléfono</span></strong>
+          <p><a href="tel:+34696659554">+34 696 65 95 54</a></p>
         </div>
-        <a
-          href="https://maps.google.com/?q=Restaurante+Bon+Vent+Jalon+Alicante"
-          target="_blank"
-          rel="noopener"
-          class="btn btn-primary"
-          style="display:block;text-align:center;margin-top:16px;">
-          <span data-lang="nl" class="active">📍 Route plannen</span>
-          <span data-lang="en">📍 Get Directions</span>
-          <span data-lang="es">📍 Cómo llegar</span>
-        </a>
       </div>
+      <div class="map-wrap">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1563.5!2d-0.025!3d38.735!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzjCsDQ0JzA2LjAiTiAwwrAwMSczMC4wIlc!5e0!3m2!1snl!2ses!4v1" loading="lazy" title="Kaart Bon Vent"></iframe>
+      </div>
+      <a href="https://maps.google.com/?q=CV-749+Jalon+Alicante" target="_blank" rel="noopener" class="btn btn-outline-dark" style="text-align:center;display:block;">
+        <span class="il active" data-nav="nl">📍 Route plannen</span><span class="il" data-nav="en">📍 Get directions</span><span class="il" data-nav="es">📍 Cómo llegar</span>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ═══ Reserve ═══ -->
+<!-- RESERVE — cream + terracotta split -->
 <section id="reserve">
-  <div class="section-inner">
-    <div data-lang="nl" class="active">
-      <p class="section-label">Reserveren</p>
-      <h2 class="section-title">Boek een tafel</h2>
-      <p class="section-lead">Wij heten u graag welkom. Vul het formulier in of bel ons direct.</p>
+  <div class="reserve-text-col">
+    <div class="reserve-text-inner">
+      <div class="label"><span class="il active" data-nav="nl">Contact</span><span class="il" data-nav="en">Contact</span><span class="il" data-nav="es">Contacto</span></div>
+      <div data-lang="nl" class="active">
+        <h2>Liever even<br><em>bellen?</em></h2>
+        <p>Wij staan altijd klaar om te helpen. Bel ons voor reserveringen, vragen over het menu of speciale gelegenheden.</p>
+      </div>
+      <div data-lang="en">
+        <h2>Prefer to<br><em>call us?</em></h2>
+        <p>We are always happy to help. Call us for reservations, menu questions or special occasions.</p>
+      </div>
+      <div data-lang="es">
+        <h2>¿Prefiere<br><em>llamarnos?</em></h2>
+        <p>Siempre estamos disponibles. Llámenos para reservas, preguntas sobre la carta o ocasiones especiales.</p>
+      </div>
+      <div class="reserve-phone">
+        <small><span class="il active" data-nav="nl">Bel ons</span><span class="il" data-nav="en">Call us</span><span class="il" data-nav="es">Llámenos</span></small>
+        <a href="tel:+34696659554">+34 696 65 95 54</a>
+      </div>
+      <a href="https://www.tripadvisor.nl/Restaurant_Review-g1598533-d2523521-Reviews-Restaurante_Bon_Vent-Jalon_Costa_Blanca_Province_of_Alicante_Valencian_Community.html" target="_blank" rel="noopener" class="btn btn-outline-dark">
+        <span class="il active" data-nav="nl">Bekijk reviews op TripAdvisor ↗</span><span class="il" data-nav="en">Read reviews on TripAdvisor ↗</span><span class="il" data-nav="es">Reseñas en TripAdvisor ↗</span>
+      </a>
     </div>
-    <div data-lang="en">
-      <p class="section-label">Reservations</p>
-      <h2 class="section-title">Book a Table</h2>
-      <p class="section-lead">We look forward to welcoming you. Fill in the form or call us directly.</p>
+  </div>
+  <div class="reserve-form-col">
+    <div class="reserve-form-inner">
+      <div class="label"><span class="il active" data-nav="nl">Reserveren</span><span class="il" data-nav="en">Reservations</span><span class="il" data-nav="es">Reservas</span></div>
+      <div data-lang="nl" class="active"><h2>Boek uw tafel</h2></div>
+      <div data-lang="en"><h2>Book your table</h2></div>
+      <div data-lang="es"><h2>Reserve su mesa</h2></div>
+      <form onsubmit="handleSubmit(event)" style="margin-top:28px;">
+        <div class="form-row">
+          <div class="form-group">
+            <label><span class="il active" data-nav="nl">Naam</span><span class="il" data-nav="en">Name</span><span class="il" data-nav="es">Nombre</span></label>
+            <input type="text" required placeholder="Jan de Vries" />
+          </div>
+          <div class="form-group">
+            <label><span class="il active" data-nav="nl">Telefoon</span><span class="il" data-nav="en">Phone</span><span class="il" data-nav="es">Teléfono</span></label>
+            <input type="tel" required placeholder="+31 6 …" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label><span class="il active" data-nav="nl">Datum</span><span class="il" data-nav="en">Date</span><span class="il" data-nav="es">Fecha</span></label>
+            <input type="date" required />
+          </div>
+          <div class="form-group">
+            <label><span class="il active" data-nav="nl">Tijdstip</span><span class="il" data-nav="en">Time</span><span class="il" data-nav="es">Hora</span></label>
+            <select required>
+              <option value="">—</option>
+              <option>12:00</option><option>12:30</option><option>13:00</option><option>13:30</option>
+              <option>14:00</option><option>14:30</option><option>15:00</option>
+              <option>19:00</option><option>19:30</option><option>20:00</option>
+              <option>20:30</option><option>21:00</option><option>21:30</option><option>22:00</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label><span class="il active" data-nav="nl">Personen</span><span class="il" data-nav="en">Guests</span><span class="il" data-nav="es">Personas</span></label>
+            <select required>
+              <option value="">—</option>
+              <option>1</option><option>2</option><option>3</option><option>4</option>
+              <option>5</option><option>6</option><option>7</option><option>8+</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label><span class="il active" data-nav="nl">Opmerkingen</span><span class="il" data-nav="en">Notes</span><span class="il" data-nav="es">Comentarios</span></label>
+            <input type="text" placeholder="…" />
+          </div>
+        </div>
+        <button type="submit" class="form-submit">
+          <span class="il active" data-nav="nl">Reservering bevestigen</span>
+          <span class="il" data-nav="en">Confirm reservation</span>
+          <span class="il" data-nav="es">Confirmar reserva</span>
+        </button>
+      </form>
     </div>
-    <div data-lang="es">
-      <p class="section-label">Reservas</p>
-      <h2 class="section-title">Reserve una Mesa</h2>
-      <p class="section-lead">Estaremos encantados de recibirle. Rellene el formulario o llámenos directamente.</p>
-    </div>
-
-    <form class="reserve-form" onsubmit="handleSubmit(event)">
-      <div class="form-row">
-        <div class="form-group">
-          <label>
-            <span data-lang="nl" class="active">Naam</span>
-            <span data-lang="en">Name</span>
-            <span data-lang="es">Nombre</span>
-          </label>
-          <input type="text" required placeholder="Jan de Vries" />
-        </div>
-        <div class="form-group">
-          <label>
-            <span data-lang="nl" class="active">Telefoon</span>
-            <span data-lang="en">Phone</span>
-            <span data-lang="es">Teléfono</span>
-          </label>
-          <input type="tel" required placeholder="+31 6 12 34 56 78" />
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>
-            <span data-lang="nl" class="active">Datum</span>
-            <span data-lang="en">Date</span>
-            <span data-lang="es">Fecha</span>
-          </label>
-          <input type="date" required />
-        </div>
-        <div class="form-group">
-          <label>
-            <span data-lang="nl" class="active">Tijdstip</span>
-            <span data-lang="en">Time</span>
-            <span data-lang="es">Hora</span>
-          </label>
-          <select required>
-            <option value="">—</option>
-            <option>12:00</option><option>12:30</option><option>13:00</option>
-            <option>13:30</option><option>14:00</option><option>14:30</option>
-            <option>15:00</option><option>19:00</option><option>19:30</option>
-            <option>20:00</option><option>20:30</option><option>21:00</option>
-            <option>21:30</option><option>22:00</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group">
-        <label>
-          <span data-lang="nl" class="active">Aantal personen</span>
-          <span data-lang="en">Number of guests</span>
-          <span data-lang="es">Número de personas</span>
-        </label>
-        <select required>
-          <option value="">—</option>
-          <option>1</option><option>2</option><option>3</option><option>4</option>
-          <option>5</option><option>6</option><option>7</option><option>8+</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>
-          <span data-lang="nl" class="active">Opmerkingen (optioneel)</span>
-          <span data-lang="en">Notes (optional)</span>
-          <span data-lang="es">Comentarios (opcional)</span>
-        </label>
-        <textarea placeholder="Allergieën, speciale gelegenheden…"></textarea>
-      </div>
-      <button type="submit" class="form-submit">
-        <span data-lang="nl" class="active">Reservering bevestigen</span>
-        <span data-lang="en">Confirm Reservation</span>
-        <span data-lang="es">Confirmar Reserva</span>
-      </button>
-    </form>
-
-    <p class="reserve-alt">
-      <span data-lang="nl" class="active">Of bel ons direct: <a href="tel:+34696659554">+34 696 65 95 54</a></span>
-      <span data-lang="en">Or call us directly: <a href="tel:+34696659554">+34 696 65 95 54</a></span>
-      <span data-lang="es">O llámenos directamente: <a href="tel:+34696659554">+34 696 65 95 54</a></span>
-    </p>
   </div>
 </section>
 
-<!-- ═══ Footer ═══ -->
+<!-- FOOTER -->
 <footer>
-  <strong>Restaurante Bon Vent</strong> &nbsp;·&nbsp; CV-749, nº 5, 03727 Jalón, Alicante &nbsp;·&nbsp;
-  <a href="tel:+34696659554">+34 696 65 95 54</a>
-  <div class="footer-links">
-    <a href="#about">
-      <span data-lang="nl" class="active">Over ons</span>
-      <span data-lang="en">About</span>
-      <span data-lang="es">Nosotros</span>
-    </a>
-    <a href="#menu">Menu</a>
-    <a href="#gallery">
-      <span data-lang="nl" class="active">Foto's</span>
-      <span data-lang="en">Gallery</span>
-      <span data-lang="es">Galería</span>
-    </a>
-    <a href="#reserve">
-      <span data-lang="nl" class="active">Reserveren</span>
-      <span data-lang="en">Reserve</span>
-      <span data-lang="es">Reservar</span>
-    </a>
-    <a href="https://www.tripadvisor.nl/Restaurant_Review-g1598533-d2523521-Reviews-Restaurante_Bon_Vent-Jalon_Costa_Blanca_Province_of_Alicante_Valencian_Community.html" target="_blank" rel="noopener">TripAdvisor</a>
+  <div class="footer-brand">
+    <div class="logo">Bon <em>Vent</em></div>
+    <p>CV-749, nº 5 · 03727 Jalón (Xaló)<br>Alicante · España<br>+34 696 65 95 54</p>
   </div>
-  <p style="margin-top:16px;font-size:0.78rem;">© 2026 Restaurante Bon Vent. Alle rechten voorbehouden.</p>
+  <div class="footer-center">
+    <a href="#about"><span class="il active" data-nav="nl">Over ons</span><span class="il" data-nav="en">About</span><span class="il" data-nav="es">Nosotros</span></a>
+    <a href="#menu">Menu</a>
+    <a href="#gallery"><span class="il active" data-nav="nl">Foto's</span><span class="il" data-nav="en">Gallery</span><span class="il" data-nav="es">Galería</span></a>
+    <a href="#info">Info</a>
+    <a href="#reserve"><span class="il active" data-nav="nl">Reserveren</span><span class="il" data-nav="en">Reserve</span><span class="il" data-nav="es">Reservar</span></a>
+    <a href="https://www.tripadvisor.nl/Restaurant_Review-g1598533-d2523521-Reviews-Restaurante_Bon_Vent-Jalon_Costa_Blanca_Province_of_Alicante_Valencian_Community.html" target="_blank" rel="noopener">TripAdvisor ↗</a>
+  </div>
+  <div class="footer-right">
+    <strong style="color:rgba(239,231,218,0.5);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;"><span class="il active" data-nav="nl">Openingstijden</span><span class="il" data-nav="en">Opening hours</span><span class="il" data-nav="es">Horario</span></strong><br>
+    <span class="il active" data-nav="nl">Di – Za: 12:00–15:30 · 19:00–22:30<br>Zo: 12:00–15:30 · Ma: gesloten</span>
+    <span class="il" data-nav="en">Tue – Sat: 12:00–15:30 · 19:00–22:30<br>Sun: 12:00–15:30 · Mon: closed</span>
+    <span class="il" data-nav="es">Mar – Sáb: 12:00–15:30 · 19:00–22:30<br>Dom: 12:00–15:30 · Lun: cerrado</span>
+  </div>
+  <div class="footer-copy">© 2026 Restaurante Bon Vent · Jalón · Costa Blanca</div>
 </footer>
 
 <script>
-  /* ── Language switcher ── */
   function setLang(lang) {
-    // Toggle data-lang blocks
-    document.querySelectorAll('[data-lang]').forEach(el => {
-      el.classList.toggle('active', el.dataset.lang === lang);
-    });
-    // Toggle nav inline spans
-    document.querySelectorAll('[data-nav]').forEach(el => {
-      el.classList.toggle('active', el.dataset.nav === lang);
-    });
-    // Toggle lang buttons
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-      btn.classList.toggle('active', btn.textContent.toLowerCase().includes(lang));
-    });
+    document.querySelectorAll('[data-lang]').forEach(el =>
+      el.classList.toggle('active', el.dataset.lang === lang));
+    document.querySelectorAll('.il[data-nav]').forEach(el =>
+      el.classList.toggle('active', el.dataset.nav === lang));
+    document.querySelectorAll('.lang-btn').forEach(btn =>
+      btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === lang));
     document.documentElement.lang = lang;
-    // Persist
     localStorage.setItem('bv-lang', lang);
   }
-
-  // Restore saved language
   const saved = localStorage.getItem('bv-lang');
   if (saved && saved !== 'nl') setLang(saved);
 
-  /* ── Form handler ── */
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () =>
+    navbar.classList.toggle('scrolled', window.scrollY > 60));
+
   function handleSubmit(e) {
     e.preventDefault();
     const lang = document.documentElement.lang || 'nl';
     const msgs = {
-      nl: '✅ Bedankt! Wij nemen snel contact met u op om uw reservering te bevestigen.',
-      en: '✅ Thank you! We will contact you shortly to confirm your reservation.',
-      es: '✅ ¡Gracias! Nos pondremos en contacto con usted pronto para confirmar su reserva.'
+      nl: '✅ Bedankt! We nemen snel contact op om uw reservering te bevestigen.',
+      en: '✅ Thank you! We will be in touch shortly.',
+      es: '✅ ¡Gracias! Nos pondremos en contacto pronto.'
     };
     alert(msgs[lang] || msgs.nl);
     e.target.reset();
   }
 
-  /* ── Smooth reveal on scroll ── */
-  const observer = new IntersectionObserver(entries => {
+  const io = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
         e.target.style.opacity = '1';
         e.target.style.transform = 'translateY(0)';
+        io.unobserve(e.target);
       }
     });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.menu-card, .gallery-item, .about-img').forEach(el => {
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.intro-block, .menu-card, .bento-item, .info-card, .about-text-inner, .reserve-text-inner').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(24px)';
-    el.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
-    observer.observe(el);
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    io.observe(el);
   });
 </script>
 </body>
