@@ -29,7 +29,7 @@
     a { color: inherit; text-decoration: none; }
     h1,h2,h3,h4 { font-family: 'Cormorant Garamond', serif; font-weight: 400; line-height: 1.1; }
 
-    /* ── lang buttons zitten nu IN de nav ── */
+    /* ── lang buttons in nav ── */
     .nav-lang {
       display: flex; gap: 4px; margin-left: 16px;
       border-left: 1px solid rgba(248,244,238,0.2);
@@ -58,6 +58,11 @@
       background: var(--terra);
       color: #fff;
       border-color: var(--terra);
+    }
+    /* wit houden ook als nav scrolled is */
+    nav.scrolled .lang-btn.active,
+    nav.scrolled .lang-btn:hover {
+      color: #fff;
     }
 
     /* ── NAV ── */
@@ -458,8 +463,8 @@
     <div class="intro-divider"></div>
     <div class="intro-block">
       <div class="intro-num">02</div>
-      <h3><span class="il active" data-nav="nl">Houtoven & grill</span><span class="il" data-nav="en">Wood oven & grill</span><span class="il" data-nav="es">Horno de leña y parrilla</span></h3>
-      <p><span class="il active" data-nav="nl">Onze signatuurgerechten worden bereid op open vuur — rook, hitte en karakter.</span><span class="il" data-nav="en">Our signature dishes are cooked over open fire — smoke, heat and character.</span><span class="il" data-nav="es">Nuestros platos estrella se cocinan al fuego — humo, calor y carácter.</span></p>
+      <h3><span class="il active" data-nav="nl">Houtgestookte oven</span><span class="il" data-nav="en">Wood-fired oven</span><span class="il" data-nav="es">Horno de leña</span></h3>
+      <p><span class="il active" data-nav="nl">Alles bereid op firewood — arroz al horno, gegrild vlees, vis en meer. Langzaam gegaard op hout en vuur, zoals het hoort.</span><span class="il" data-nav="en">Everything cooked on firewood — arroz al horno, grilled meat, fish and more. Slow-cooked on wood and fire, the proper way.</span><span class="il" data-nav="es">Todo cocinado a leña — arroz al horno, carnes a la brasa, pescado y más. A fuego lento, como debe ser.</span></p>
     </div>
     <div class="intro-divider"></div>
     <div class="intro-block">
@@ -477,31 +482,31 @@
       <div class="label"><span class="il active" data-nav="nl">Ons verhaal</span><span class="il" data-nav="en">Our story</span><span class="il" data-nav="es">Nuestra historia</span></div>
       <div data-lang="nl" class="active">
         <h2 class="display">Waar de bergen<br><em>de zee ontmoeten</em></h2>
-        <p>Bon Vent ligt hoog op de Sierra de Bernia, met een spectaculair uitzicht over de Costa Blanca. Een restaurant dat geboren is uit liefde voor de plek — de ruige rotsen, de amandel- en olijfbomen, de bijna tastbare stilte van de bergen.</p>
+        <p>Bon Vent ligt hoog op de Sierra de Bernia, met een spectaculair uitzicht over de omliggende bergtoppen en valleien. Een restaurant dat geboren is uit liefde voor de plek — de ruige rotsen, de amandel- en olijfbomen, de bijna tastbare stilte van de bergen.</p>
         <p>We koken zoals de streek het vraagt: eerlijk, seizoensgebonden, met vuur en geduld.</p>
         <div class="stats">
           <div><div class="stat-val">+15</div><div class="stat-label">Jaar ervaring</div></div>
-          <div><div class="stat-val">100%</div><div class="stat-label">Lokale producten</div></div>
+          <div><div class="stat-val">100%</div><div class="stat-label">Op houtgestookt vuur</div></div>
         </div>
         <a href="#reserve" class="btn btn-primary">Reserveer nu</a>
       </div>
       <div data-lang="en">
-        <h2 class="display">Where mountains<br><em>meet the sea</em></h2>
-        <p>Bon Vent sits high on the Sierra de Bernia, with spectacular views over the Costa Blanca. A restaurant born from love of place — rugged rock, almond and olive trees, the almost tangible silence of the mountains.</p>
+        <h2 class="display">Where mountains<br><em>meet the horizon</em></h2>
+        <p>Bon Vent sits high on the Sierra de Bernia, with spectacular views over the surrounding peaks and valleys. A restaurant born from love of place — rugged rock, almond and olive trees, the almost tangible silence of the mountains.</p>
         <p>We cook as the region demands: honest, seasonal, with fire and patience.</p>
         <div class="stats">
           <div><div class="stat-val">+15</div><div class="stat-label">Years experience</div></div>
-          <div><div class="stat-val">100%</div><div class="stat-label">Local produce</div></div>
+          <div><div class="stat-val">100%</div><div class="stat-label">Wood-fired cooking</div></div>
         </div>
         <a href="#reserve" class="btn btn-primary">Reserve now</a>
       </div>
       <div data-lang="es">
-        <h2 class="display">Donde la montaña<br><em>se encuentra con el mar</em></h2>
-        <p>Bon Vent se encuentra en lo alto de la Sierra de Bernia, con vistas espectaculares sobre la Costa Blanca. Un restaurante nacido del amor por este lugar — roca viva, almendros y olivos, el silencio casi palpable de la montaña.</p>
+        <h2 class="display">Donde la montaña<br><em>toca el horizonte</em></h2>
+        <p>Bon Vent se encuentra en lo alto de la Sierra de Bernia, con vistas espectaculares sobre los picos y valles de alrededor. Un restaurante nacido del amor por este lugar — roca viva, almendros y olivos, el silencio casi palpable de la montaña.</p>
         <p>Cocinamos como pide la tierra: honesto, de temporada, con fuego y paciencia.</p>
         <div class="stats">
           <div><div class="stat-val">+15</div><div class="stat-label">Años de experiencia</div></div>
-          <div><div class="stat-val">100%</div><div class="stat-label">Productos locales</div></div>
+          <div><div class="stat-val">100%</div><div class="stat-label">Cocina a leña</div></div>
         </div>
         <a href="#reserve" class="btn btn-primary">Reservar ahora</a>
       </div>
@@ -516,16 +521,16 @@
 <!-- PHOTO BAND -->
 <div class="photo-band">
   <div class="band-item">
-    <img src="view%20from%20terras%202.jpg" alt="Uitzicht terras" />
-    <span class="band-caption"><span class="il active" data-nav="nl">Uitzicht dal</span><span class="il" data-nav="en">Valley view</span><span class="il" data-nav="es">Vista del valle</span></span>
+    <img src="view%20from%20terras%202.jpg" alt="Uitzicht Sierra de Bernia" />
+    <span class="band-caption"><span class="il active" data-nav="nl">Bergzicht</span><span class="il" data-nav="en">Mountain view</span><span class="il" data-nav="es">Vista montaña</span></span>
   </div>
   <div class="band-item">
-    <img src="binnen%20in%20restaurant.jpg" alt="Interieur" />
-    <span class="band-caption">Bar</span>
+    <img src="121821597_2922991531320693_5083579696386887768_n.jpg" alt="Vlees in de houtoven" />
+    <span class="band-caption"><span class="il active" data-nav="nl">Houtoven</span><span class="il" data-nav="en">Wood oven</span><span class="il" data-nav="es">Horno de leña</span></span>
   </div>
   <div class="band-item">
-    <img src="restaurante-bon-vent%20(3).jpg" alt="Restaurant" />
-    <span class="band-caption"><span class="il active" data-nav="nl">Terras</span><span class="il" data-nav="en">Terrace</span><span class="il" data-nav="es">Terraza</span></span>
+    <img src="107431224_2829945903958590_3572502732353583702_n.jpg" alt="Dessert met bergzicht" />
+    <span class="band-caption"><span class="il active" data-nav="nl">Dessert & uitzicht</span><span class="il" data-nav="en">Dessert & view</span><span class="il" data-nav="es">Postre & vistas</span></span>
   </div>
 </div>
 
@@ -542,7 +547,7 @@
   </div>
   <div class="menu-grid">
     <div class="menu-card">
-      <img src="hapjes.jpg" alt="Voorgerechten" />
+      <img src="471320305_4142205802732587_2272236091404107703_n.jpg" alt="Tapas & voorgerechten" />
       <div class="menu-card-overlay">
         <div class="menu-card-num">01</div>
         <h3><span class="il active" data-nav="nl">Voorgerechten</span><span class="il" data-nav="en">Starters</span><span class="il" data-nav="es">Entrantes</span></h3>
@@ -550,11 +555,11 @@
       </div>
     </div>
     <div class="menu-card">
-      <img src="arroz-al-horno-de-lena.jpg" alt="Hoofdgerechten" />
+      <img src="118125536_2870009526618894_523421951411119574_n.jpg" alt="Arroz al horno uit de houtoven" />
       <div class="menu-card-overlay">
         <div class="menu-card-num">02</div>
         <h3><span class="il active" data-nav="nl">Hoofdgerechten</span><span class="il" data-nav="en">Main courses</span><span class="il" data-nav="es">Platos principales</span></h3>
-        <p><span class="il active" data-nav="nl">Arroz al horno, fideuà de pato en verse vis — bereid op houtskool en vuur.</span><span class="il" data-nav="en">Arroz al horno, fideuà de pato and fresh fish — cooked on charcoal and fire.</span><span class="il" data-nav="es">Arroz al horno, fideuà de pato y pescado fresco — a la leña y al fuego.</span></p>
+        <p><span class="il active" data-nav="nl">Arroz al horno uit de houtoven, fideuà de pato en verse vis — bereid op firewood.</span><span class="il" data-nav="en">Arroz al horno from the wood-fired oven, fideuà de pato and fresh fish — cooked on firewood.</span><span class="il" data-nav="es">Arroz al horno del horno de leña, fideuà de pato y pescado fresco — cocinado a leña.</span></p>
       </div>
     </div>
     <div class="menu-card">
@@ -567,7 +572,7 @@
     </div>
   </div>
   <div class="menu-note">
-    <p><span class="il active" data-nav="nl">✦ Menu wisselend per seizoen — vraag naar de dagelijkse aanbevelingen</span><span class="il" data-nav="en">✦ Menu changes seasonally — ask about our daily recommendations</span><span class="il" data-nav="es">✦ Carta de temporada — pregunte por nuestras recomendaciones del día</span></p>
+    <p><span class="il active" data-nav="nl">✦ Menu wisselend per seizoen — alles bereid op houtgestookt vuur</span><span class="il" data-nav="en">✦ Menu changes seasonally — everything cooked on wood-fired flame</span><span class="il" data-nav="es">✦ Carta de temporada — todo cocinado al fuego de leña</span></p>
     <a href="#reserve" class="btn btn-terra-outline"><span class="il active" data-nav="nl">Tafel reserveren</span><span class="il" data-nav="en">Reserve a table</span><span class="il" data-nav="es">Reservar mesa</span></a>
   </div>
 </section>
@@ -579,11 +584,11 @@
     <h2 class="display" style="color:var(--offwhite)"><span class="il active" data-nav="nl">Een plek<br><em>om te blijven</em></span><span class="il" data-nav="en">A place<br><em>to stay</em></span><span class="il" data-nav="es">Un lugar<br><em>para quedarse</em></span></h2>
   </div>
   <div class="bento">
-    <div class="bento-item b1"><img src="restaurante-bon-vent.jpg" alt="Restaurant" /></div>
-    <div class="bento-item b2"><img src="fideua-de-pato.jpg" alt="Fideuà de pato" /></div>
-    <div class="bento-item b3"><img src="view%20from%20terras%202.jpg" alt="Uitzicht terras" /></div>
-    <div class="bento-item b4"><img src="buena-parrilla-de-carne.jpg" alt="Gegrild vlees" /></div>
-    <div class="bento-item b5"><img src="ensalada.jpg" alt="Ensalada" /></div>
+    <div class="bento-item b1"><img src="499631811_1169937275131299_6239267111257332397_n.jpg" alt="Paella buffet" /></div>
+    <div class="bento-item b2"><img src="56917920_2424993324453852_8050939805787226112_n.jpg" alt="Arroz al horno houtoven keuken" /></div>
+    <div class="bento-item b3"><img src="483451501_1110137937777900_1337127613814407877_n.jpg" alt="Bergzicht Sierra de Bernia" /></div>
+    <div class="bento-item b4"><img src="56848050_2427364960883355_8465732062014341120_n.jpg" alt="Houtgestookte oven" /></div>
+    <div class="bento-item b5"><img src="194831039_3105985369687974_4152496129673366573_n.jpg" alt="Paella de marisco" /></div>
   </div>
 </section>
 
