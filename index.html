@@ -400,8 +400,16 @@
     .hamburger {
       display: none;
       flex-direction: column; justify-content: center; gap: 5px;
-      width: 36px; height: 36px; cursor: pointer;
-      background: transparent; border: none; padding: 4px;
+      width: 40px; height: 40px; cursor: pointer;
+      background: rgba(22,18,14,0.35);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(248,244,238,0.15);
+      border-radius: 4px; padding: 8px;
+      transition: background 0.35s, border-color 0.35s;
+    }
+    nav.scrolled .hamburger {
+      background: rgba(46,36,30,0.08);
+      border-color: rgba(46,36,30,0.15);
     }
     .hamburger span {
       display: block; height: 2px; border-radius: 2px;
