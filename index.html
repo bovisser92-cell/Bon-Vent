@@ -479,13 +479,24 @@
       .about-text-col { padding: 48px 20px; }
       .about-img-col { height: 260px; }
 
-      /* Photo band: groot bergzicht bovenaan, twee kleinere eronder */
+      /* Photo band: horizontaal swipeable strip */
       .photo-band {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 260px 180px;
-        height: auto;
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        height: 300px;
+        gap: 0;
+        scrollbar-width: none;
       }
-      .photo-band .band-item:first-child { grid-column: 1/-1; }
+      .photo-band::-webkit-scrollbar { display: none; }
+      .photo-band .band-item {
+        flex: 0 0 82vw;
+        height: 300px;
+        scroll-snap-align: start;
+      }
+      .photo-band .band-item:first-child { grid-column: auto; }
       .photo-band .band-item:last-child { grid-column: auto; }
 
       /* Menu */
